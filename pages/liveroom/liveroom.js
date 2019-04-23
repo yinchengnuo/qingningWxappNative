@@ -2,6 +2,7 @@ const app = getApp()
 let liveList = null
 Page({
   data: {
+    Android: app.globalData.Android,
     coverImageLeft: (app.globalData.systemInfo.screenHeight - app.globalData.systemInfo.screenWidth) / 2,
     swiperList: [],
     audienceList: [],

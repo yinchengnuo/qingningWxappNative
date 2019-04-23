@@ -106,7 +106,8 @@
     background-color: orangered;
 }
 .small-video-cover-videodes {
-    line-height: 3.3333vw;
+    box-sizing: border-box;
+    line-height: 3vw;
     font-size: 3vw;
     color: #fff;
     text-indent: 2em;

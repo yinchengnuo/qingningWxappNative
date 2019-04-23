@@ -30,7 +30,7 @@
             </view>
           </view>
         </view>
-        <video id="{{'smallvideo' + index}}" hidden="{{index !== nowIndex}}" custom-cache="{{false}}" style="opacity: {{playing ? '1' : '0'}}" class="live-room-live-player" src="{{item.smallvideopath}}" object-fit="fill" loop="{{true}}" controls="{{false}}" bindplay="play" show-center-play-btn="{{false}}"></video>
+        <video id="{{'smallvideo' + index}}" wx-if="{{Android}}" hidden="{{index !== nowIndex}}" custom-cache="{{false}}" style="opacity: {{playing ? '1' : '0'}}" class="live-room-live-player" src="{{item.smallvideopath}}" object-fit="fill" loop="{{true}}" controls="{{false}}" bindplay="play" show-center-play-btn="{{false}}"></video>
         <image class="small-video-cover-image" src="{{item.bgpath}}"></image>
       </swiper-item>
     </block>

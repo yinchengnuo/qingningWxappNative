@@ -3,12 +3,17 @@ App({
   onLaunch(options) {
     try {
       this.globalData.systemInfo = wx.getSystemInfoSync()
+      console.log(this.globalData.systemInfo)
+      if (this.globalData.systemInfo.system.match(/Android/)) {
+        this.globalData.Android = true
+      }
     } catch (e) {
       console.log('系统信息获取失败')
     }
   },
   globalData: {
     systemInfo: null,
+    Android: null,
     api: {
       api: 'https://api.96friend.cn/',
       tuijianUrl: 'videoLive!getRecommendList.htm',

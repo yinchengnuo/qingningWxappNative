@@ -63,7 +63,7 @@
             <view class="live-room-cover-alert-bottomright" data-userInfo="{{alertWatcherName}}" bind:tap="toUserIndex">主页</view>
           </view>
         </view>
-        <video id="{{'video' + index}}" custom-cache="{{false}}" wx:if="{{index === currentIndex}}" class="live-room-live-player" src="{{item.streamUrl + '.m3u8'}}" object-fit="fill"  controls="{{false}}" bindplay="play"></video>
+        <video id="{{'video' + index}}" custom-cache="{{false}}" wx:if="{{index === currentIndex && Android}}" class="live-room-live-player" src="{{item.streamUrl + '.m3u8'}}" object-fit="fill"  controls="{{false}}" bindplay="play"></video>
       </swiper-item>
     </block>
   </swiper>

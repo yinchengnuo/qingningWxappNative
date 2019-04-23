@@ -1,5 +1,4 @@
 const app = getApp()
-
 Component({
   properties: {
     isShow: {

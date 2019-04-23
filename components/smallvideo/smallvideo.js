@@ -8,6 +8,7 @@ Component({
     }
   },
   data: {
+    Android: app.globalData.Android,
     smallvideoList,
     nowIndex: 0,
     playing: false
