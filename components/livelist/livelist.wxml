@@ -1,0 +1,58 @@
+<view class="live-list-container">
+  <view class="live-list-nav-bar">
+    <text class="{{nowIndex === 0 ? 'live-list-nav-item live-list-nav-item-active' : 'live-list-nav-item'}}" data-index="0" bindtap="tapChangeIndex">推荐</text>
+    <text class="{{nowIndex === 1 ? 'live-list-nav-item live-list-nav-item-active' : 'live-list-nav-item'}}" data-index="1" bindtap="tapChangeIndex">才艺</text>
+    <text class="{{nowIndex === 2 ? 'live-list-nav-item live-list-nav-item-active' : 'live-list-nav-item'}}" data-index="2" bindtap="tapChangeIndex">魅力</text>
+    <text class="{{nowIndex === 3 ? 'live-list-nav-item live-list-nav-item-active' : 'live-list-nav-item'}}" data-index="3" bindtap="tapChangeIndex">杭州</text>
+  </view>
+  <text class="live-list-nav-item-hangzhou" style="color: {{nowIndex === 3 ? 'orange': 'balck'}};">附近</text>
+  <view class="live-list-swiper-scrollbar">
+    <view class="live-list-swiper-scrollbar-wrapper">
+      <view class="live-list-swiper-scrollbar-drag" style="transform: translateX({{computedPosition}}rpx)"></view>
+    </view>
+  </view>
+  <view class="pull-down-refresh-animation" style="opacity: {{pullDownRefreshDistance / 60}}; transform: translateY({{pullDownRefreshing ? pullDownRefreshDistance * 0.2 - 20 : pullDownRefreshDistance * 0.5}}rpx);">
+    <text class="{{pullDownRefreshing && refreshAnimationActive === 1 ? 'pull-down-refresh-animation-item pull-down-refresh-animation-active' : 'pull-down-refresh-animation-item'}}"></text>
+    <text class="{{pullDownRefreshing && refreshAnimationActive === 2 ? 'pull-down-refresh-animation-item pull-down-refresh-animation-active' : 'pull-down-refresh-animation-item'}}"></text>
+    <text class="{{pullDownRefreshing && refreshAnimationActive === 3 ? 'pull-down-refresh-animation-item pull-down-refresh-animation-active' : 'pull-down-refresh-animation-item'}}"></text>
+  </view>
+  <swiper class="live-list-swiper-container" vertical="{{true}}" bindtransition="pullDownRefresh" bind:touchend="touchEnd" style="top: {{pullDownRefreshing ? 90 + ((pullDownRefreshDistance - stopPullDown) > 180 ? (pullDownRefreshDistance - stopPullDown) : 90) : '90'}}rpx">
+    <swiper-item class="live-list-swiper-wrapper">
+      <swiper class="live-list-swiper" 
+              current="{{nowIndex}}" 
+              duration="{{345}}"
+              bindchange="swipeChangeIndex"
+              bindtransition="swipePositionChange"
+              bindanimationfinish="swipePositionChangeFinish">
+        <block wx:for="{{liveList}}" wx:key="index">
+          <swiper-item item-id="{{index}}">
+            <scroll-view class="live-list-content" scroll-y lower-threshold="{{80}}" bindscrolltolower="reachBottom">
+              <view class="live-list-item" wx:for="{{item}}" wx:key="index" data-liveInfo="{{index}}" bind:tap="toLiveRoom">
+                <image class="live-list-item-image" src="{{item.bgpic}}" lazy-load="true"></image>
+                <view class="live-list-item-userinfo">
+                  <text class="live-list-item-userinfo-name">{{item.name}}</text>
+                  <text class="live-list-item-userinfo-level">m{{item.mlevel}}</text>
+                  <text wx:if="{{item.labelName}}" class="live-list-item-userinfo-skill">{{item.labelName}}</text>
+                  <text wx:if="{{item.fujin === '杭州'}}" class="live-list-item-userinfo-city">{{item.city}}</text>
+                </view>
+              </view>
+              <view wx:if="{{nowIndex === 0}}" class="live-list-content-bottom">{{tuijianPage ? '加载中...' : '下载富聊APP, 看更多直播哦~'}}
+                <text class="live-list-content-bottom-download" hidden="{{tuijianPage}}">下载</text>
+              </view>
+              <view wx:if="{{nowIndex === 1}}" class="live-list-content-bottom">{{caiyiPage ? '加载中...' : '下载富聊APP, 看更多直播哦~'}}
+                <text class="live-list-content-bottom-download" hidden="{{caiyiPage}}">下载</text>
+              </view>
+              <view wx:if="{{nowIndex === 2}}" class="live-list-content-bottom">{{meiliPage ? '加载中...' : '下载富聊APP, 看更多直播哦~'}}
+                <text class="live-list-content-bottom-download" hidden="{{meiliPage}}">下载</text>
+              </view>
+              <view wx:if="{{nowIndex === 3}}" class="live-list-content-bottom">{{hangzhouPage ? '加载中...' : '下载富聊APP, 看更多直播哦~'}}
+                <text class="live-list-content-bottom-download" hidden="{{hangzhouPage}}">下载</text>
+              </view>
+            </scroll-view>
+          </swiper-item>
+        </block>
+      </swiper>
+    </swiper-item>
+  </swiper>
+</view>
+

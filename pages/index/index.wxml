@@ -1,0 +1,29 @@
+<view class="index">
+  <navigationbar style="display:{{onSmallVideo ? 'none' : 'flex'}}" title="{{navigationBarTitle}}"></navigationbar>
+  <live-list style="display:{{onLiveList ? 'flex' : 'none'}}" isShow="{{onLiveList}}"></live-list>
+  <small-video style="display:{{onSmallVideo ? 'flex' : 'none'}}" isShow="{{onSmallVideo}}"></small-video>
+  <video-chat style="display:{{onVidedoChat ? 'flex' : 'none'}}" isShow="{{onVidedoChat}}"></video-chat>
+  <about style="display:{{onAbout ? 'flex' : 'none'}}" isShow="{{onAbout}}"></about>
+  <view class="tab-bar" style="bottom: {{tabBarTranslate}}px; rotate(7deg);; background: {{onSmallVideo ? 'transparent' : '#fff'}}">
+    <view class="tab-list" bind:tap="tap" data-state="live-list">
+      <image wx:if="{{onLiveList}}" class="tab-image" src="../../images/tabBar/onlive.png"></image>
+      <image wx:else class="tab-image" src="../../images/tabBar/live.png"></image>  
+      <text class="{{onLiveList ? 'tab-selected' : ''}}" selectable="false" space="false" decode="false">直播</text>
+    </view>
+    <view class="tab-list" bind:tap="tap" data-state="small-video">
+      <image wx:if="{{onSmallVideo}}" class="tab-image" src="../../images/tabBar/onsmallvideo.png"></image>
+      <image wx:else class="tab-image" src="../../images/tabBar/smallvideo.png"></image>  
+      <text class="{{onSmallVideo ? 'tab-selected' : ''}}" selectable="false" space="false" decode="false">小视频</text>
+    </view>
+    <view class="tab-list" bind:tap="tap" data-state="video-chat">
+      <image wx:if="{{onVidedoChat}}" class="tab-image" src="../../images/tabBar/onvideochat.png"></image>
+      <image wx:else class="tab-image" src="../../images/tabBar/videochat.png"></image>  
+      <text class="{{onVidedoChat ? 'tab-selected' : ''}}" selectable="false" space="false" decode="false">视频聊</text>
+    </view>
+    <view class="tab-list" bind:tap="tap" data-state="about">
+      <image wx:if="{{onAbout}}" class="tab-image" src="../../images/tabBar/onabout.png"></image>
+      <image wx:else class="tab-image" src="../../images/tabBar/about.png"></image>  
+      <text class="{{onAbout ? 'tab-selected' : ''}}" selectable="false" space="false" decode="false">关于富聊</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,70 @@
+<view class="live-room">
+  <swiper class="live-room-swiper" vertical="{{true}}" circular="{{true}}" duration="{{234}}" current="{{1}}" bindanimationfinish="swiperMoveFinish">
+    <block wx:for="{{swiperList}}" wx:key="index">
+      <swiper-item item-id="{{index}}" >
+        <view class="live-room-loading-wrapper" style="z-index: {{playing ? '-1' : '3'}}">
+          <view class="live-room-loading">
+            <image class="live-room-loading-image" src="../../images/logo.png" lazy-load="{{false}}"></image>  
+          </view>
+        </view>
+        <image class="live-room-cover-image" src="{{item.bgpic}}" lazy-load="{{false}}" style="z-index: {{playing ? '-1' : '2'}}; left: {{-coverImageLeft + 'px'}}"></image>
+        <view class="live-room-cover-roominfo" wx:if="{{index === currentIndex}}">
+          <view class="live-room-cover-anchorinfo">
+            <image src="{{item.userpic}}" class="live-room-cover-anchorpic" data-userInfo="{{item.name}}" bind:tap="toUserIndex"></image>
+            <view class="live-room-cover-anchorlevel">m{{item.mlevel}}</view>
+            <view class="live-room-cover-anchornamenum">
+              <view class="live-room-cover-anchorname">{{item.name}}</view>
+              <view class="live-room-cover-anchornum">{{item.audienceNums}}人</view>
+            </view>
+            <view class="live-room-cover-anchorfouce" bind:tap="toAbout">关注</view>
+          </view>
+          <view class="live-room-cover-wactherinfo">
+            <view class="live-room-cover-wacther" wx:for="{{audienceList}}" wx:key="index" data-wacther="{{index}}" bind:tap="showWatcherInfo">
+              <image src="../../images/ycn.jpg" class="live-room-cover-wactherpic"></image>
+              <view class="live-room-cover-wactherlevel">V9</view>
+            </view>
+          </view>
+        </view>
+        <view class="live-room-cover-danmu" wx:if="{{index === currentIndex}}">
+          <view class="live-room-cpver-damu-item" wx:for="{{danmuList}}" wx:key="index">
+            <view class="live-room-cpver-damu-level">V{{item.vlevel}}</view>
+            <view class="live-room-cpver-damu-name" data-wacther="{{item.name}}" bind:tap="showWatcherInfo">{{item.name}}</view>
+            <view class="live-room-cpver-damu-text">{{item.text}}</view>
+          </view>
+        </view>
+        <view class="live-room-cover-activity" wx:if="{{index === currentIndex}}">
+          <swiper autoplay="{{true}}" circular="{{true}}" interval="2345">
+            <block wx:for="{{activityImages}}" wx:key="index">
+              <swiper-item>
+                <image src="{{item}}"/>
+              </swiper-item>
+            </block>
+          </swiper>
+        </view>
+        <view class="live-room-cover-bottom" wx:if="{{index === currentIndex}}">
+          <view class="live-room-cover-share">
+            <image class="live-room-cover-share-icon" src="../../images/share.png"></image>
+          </view>
+          <view class="live-room-cover-download">
+            <image class="live-room-cover-download-icon" src="../../images/logo.png"></image>
+            <text class="live-room-cover-download-text">下载青柠直播APP，和TA亲密互动</text>
+          </view>
+          <view class="live-room-cover-close" bind:tap="back">
+            <image class="live-room-cover-close-icon" src="../../images/close.png"></image>
+          </view>
+        </view>
+        <view class="live-room-cover-alert" hidden="{{alertHidden}}">
+          <view class="live-room-cover-alert-close" bind:tap="hideWatcherInfo">×</view>
+          <image class="live-room-cover-alert-pic" src="../../images/ycn.jpg" data-userInfo="{{alertWatcherName}}" bind:tap="toUserIndex"></image>
+          <view class="live-room-cover-alert-name">{{alertWatcherName}}</view>
+          <view class="live-room-cover-alert-sexage">♂ 18岁</view>
+          <view class="live-room-cover-alert-bottom">
+            <view class="live-room-cover-alert-bottomleft" bind:tap="toAbout">关注</view>
+            <view class="live-room-cover-alert-bottomright" data-userInfo="{{alertWatcherName}}" bind:tap="toUserIndex">主页</view>
+          </view>
+        </view>
+        <video id="{{'video' + index}}" custom-cache="{{false}}" wx:if="{{index === currentIndex}}" class="live-room-live-player" src="{{item.streamUrl + '.m3u8'}}" object-fit="fill"  controls="{{false}}" bindplay="play"></video>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>

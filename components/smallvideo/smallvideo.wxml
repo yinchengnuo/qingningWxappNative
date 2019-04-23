@@ -1,0 +1,38 @@
+<view class="small-video">
+  <swiper class="small-video-swiper" vertical="{{true}}" circular="{{true}}" duration="{{234}}" bindanimationfinish="swiperMoveFinish">
+    <block wx:for="{{smallvideoList}}" wx:key="index">
+      <swiper-item item-id="{{index}}">
+        <view class="small-video-loading-wrapper" wx:if="{{index === nowIndex && !playing}}">
+          <view class="small-video-loading">
+            <image class="small-video-loading-image" src="../../images/logo.png" lazy-load="{{false}}"></image>  
+          </view>
+        </view>
+        <view class="small-video-cover-videoinfo">
+          <view class="small-video-cover-userinfo">
+            <view class="small-video-cover-user">
+              <image class="small-video-cover-userpic" src="{{item.headpic[0]}}"></image> 
+              <view class="small-video-cover-name">{{item.name}}</view>
+              <view class="small-video-cover-level">m{{item.Mlevel}}</view>
+              <view class="small-video-cover-add">+</view>   
+            </view>
+            <view class="small-video-cover-videodes">{{item.smallvideodes}}</view>
+          </view>
+          <view class="small-video-cover-bottom">
+            <view class="small-video-cover-share">
+              <image class="small-video-cover-share-icon" src="../../images/share.png"></image>
+            </view>
+            <view class="small-video-cover-download">
+              <image class="small-video-cover-download-icon" src="../../images/logo.png"></image>
+              <text class="small-video-cover-download-text">下载青柠直播APP，看更多小视频</text>
+            </view>
+            <view class="small-video-cover-music">
+              <image class="small-video-cover-music-icon" src="{{item.headpic[0]}}"></image>
+            </view>
+          </view>
+        </view>
+        <video id="{{'smallvideo' + index}}" hidden="{{index !== nowIndex}}" custom-cache="{{false}}" style="opacity: {{playing ? '1' : '0'}}" class="live-room-live-player" src="{{item.smallvideopath}}" object-fit="fill" loop="{{true}}" controls="{{false}}" bindplay="play" show-center-play-btn="{{false}}"></video>
+        <image class="small-video-cover-image" src="{{item.bgpath}}"></image>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>

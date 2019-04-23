@@ -1,0 +1,27 @@
+/**index.wxss**/
+.index {
+  height: 100%;
+}
+.tab-bar {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  height: 120rpx;
+  display: flex;
+}
+.tab-list {
+  flex-grow: 1;
+  font-size: 24rpx;
+  color: #ccc;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.tab-image {
+  width: 48rpx;
+  height: 48rpx;
+}
+.tab-selected {
+  color: orange;
+}

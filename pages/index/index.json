@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "live-list": "../../components/livelist/livelist",
+    "small-video": "../../components/smallvideo/smallvideo",
+    "video-chat": "../../components/videochat/videochat",
+    "about": "../../components/about/about",
+    "navigationbar": "../../components/navigationbar/navigationbar"
+  },
+  "backgroundColor": "#fff"
+}

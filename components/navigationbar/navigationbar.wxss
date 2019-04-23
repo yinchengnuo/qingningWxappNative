@@ -1,0 +1,7 @@
+.navigation-bar {
+    height: 140rpx;
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+    padding-top: 70rpx;
+}

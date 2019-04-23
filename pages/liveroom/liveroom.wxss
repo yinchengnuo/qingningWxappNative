@@ -1,0 +1,305 @@
+@keyframes rolation
+{
+    from {
+        transform: rotateZ(0deg);
+    }
+    to {
+        transform: rotateZ(360deg);
+    }
+}
+@keyframes translation
+{
+    0% {
+        transform: translateY(-10vw);
+    }
+    50% {
+        transform: translateY(10vw);
+    }
+    100% {
+        transform: translateY(-10vw);
+    }
+}
+.live-room {
+    width: 100vw;
+    height: 100vh;
+}
+.live-room-swiper {
+    width: 100vw;
+    height: 100vh;
+}
+.live-room-loading-wrapper {
+    position: absolute;
+    width: 20vw;
+    height: 20vw;
+    left: 50%;
+    top: 50%;
+    margin-left: -10vw;
+    margin-top: -10vw;
+    border-radius: 50%;
+    overflow: hidden;
+    z-index: 3;
+    animation: translation 2s ease-in-out infinite;
+}
+.live-room-loading {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    animation: rolation 1s linear infinite;
+}
+.live-room-loading-image {
+    position: absolute;
+    width: 30vw;
+    height: 30vw;
+    left: -5vw;
+    top: -3.6vw;
+}
+.live-room-cover-image {
+    position: absolute;
+    width: 100vh;
+    height: 100vh;
+    z-index: 2;
+}
+.live-room-cover-roominfo {
+    position: absolute;
+    width: 96vw;
+    height: 10vw;
+    z-index: 666;
+    left: 2vw;
+    top: 8vw;
+}
+.live-room-cover-anchorinfo {
+    background-color: rgba(0, 0, 0, .6);
+    border-radius: 10vw;
+    height: 10vw;
+    position: relative;
+    float: left;
+    box-sizing: border-box;
+    padding: 1vw;
+    margin-right: 1vw;
+}
+.live-room-cover-anchorpic, .live-room-cover-wactherpic {
+    width: 8vw; 
+    height: 8vw;
+    float: left;
+    margin-right: 1vw;
+    border-radius: 50%;
+}
+.live-room-cover-anchorlevel, .live-room-cover-wactherlevel {
+    position: absolute;
+    width: 4vw;
+    height: 2vw;
+    line-height: 2vw;
+    text-align: center;
+    left: 5vw; 
+    top: 7vw;
+    border-radius: 1vw;
+    background-color: orangered;
+    color: #fff;
+    font-size: 2vw;
+}
+.live-room-cover-wactherlevel {
+    background-color: dodgerblue;
+}
+.live-room-cover-anchornamenum {
+    float: left;
+}
+.live-room-cover-anchorname, .live-room-cover-anchornum {
+    height: 4vw;
+    line-height: 4vw;
+    font-size: 3vw;
+    text-align: center;
+    color: #fff;
+}
+.live-room-cover-anchorfouce {
+    float: left;
+    width: 10vw;
+    height: 6vw;
+    margin: 1vw 1vw 1vw 2vw;
+    line-height: 6vw;
+    text-align: center;
+    border-radius: 6vw;
+    font-size: 3vw;
+    color: #fff;
+    background-color: orangered;
+}
+.live-room-cover-wactherinfo {
+    height: 10vw;
+    overflow: scroll;
+    white-space: nowrap;
+}
+.live-room-cover-wacther {
+    width: 10vw;
+    height: 10vw;
+    display: inline-block;
+    margin-right: 1vw;
+    box-sizing: border-box;
+    padding: 1vw;
+    position: relative;
+}
+.live-room-cover-danmu {
+    position: absolute;
+    width: 60vw;    
+    height: 36vw;
+    z-index: 666;
+    left: 2vw;
+    bottom: 20vw;
+    overflow: auto;
+}
+.live-room-cpver-damu-item {
+    background-color: rgba(0, 0, 0, .6);
+    border-radius: 8rpx;
+    float: left;
+    min-width: 40vw;
+    min-height: 6vw;
+    margin-bottom: 1vw;
+    line-height: 6vw;
+    font-size: 3.6vw;
+    color: #fff;
+    display: flex;
+    padding-right: 2vw;
+    align-items: baseline;
+}
+.live-room-cpver-damu-level {
+    flex-shrink: 0;
+    width: 8vw;
+    height: 4vw;
+    line-height: 4vw;
+    text-align: center;
+    background-color: dodgerblue;
+    border-radius: 8rpx;
+    margin-right: 2vw;
+}
+.live-room-cpver-damu-name {
+    flex-shrink: 0;
+    margin-right: 2vw;
+    white-space: nowrap;
+    color: goldenrod;
+}
+.live-room-cover-activity {
+    position: absolute;
+    width: 34vw;  
+    height: 8.5vw; 
+    z-index: 666;
+    right: 2vw;
+    bottom: 32.75vw; 
+}
+.live-room-cover-roominfo-active swiper {
+    width: 100%;
+    height: 100%;
+}
+.live-room-cover-activity swiper image {
+    width: 34vw;
+    height: 8.5vw;
+    float: left;
+}
+.live-room-cover-bottom {
+    position: absolute;
+    width: 100vw; 
+    height: 20vw;
+    z-index: 666;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;   
+}
+.live-room-cover-share, .live-room-cover-close {
+    width: 10vw;
+    height: 10vw;
+    display: flex;
+    border-radius: 50%;
+    justify-content: space-around;
+    align-items: center; 
+    background-color: rgba(0, 0, 0, .6)
+}
+.live-room-cover-share-icon {
+    width: 5vw;
+    height: 4vw;
+}.live-room-cover-close-icon {
+    width: 5vw;
+    height: 5vw;
+}
+.live-room-cover-download {
+    width: 70vw;
+    height: 10vw;
+    overflow: hidden;
+    border-radius: 10vw;
+    background: linear-gradient(rgb(177, 221, 85) , rgb(124, 184, 44));
+}
+.live-room-cover-download-icon {
+    width: 10vw;
+    height: 10vw;
+    float: left;
+}
+.live-room-cover-download-text {
+    display: inline-block;
+    width: 60vw;
+    height: 10vw;
+    line-height: 10vw;
+    color: rgb(255, 0, 66);
+    font-weight: bold;
+    font-size: 28rpx;
+    opacity: .6;
+}
+.live-room-cover-alert {
+    position: absolute;
+    width: 70vw;    
+    height: 60vw;
+    z-index: 666;
+    left: 50%;
+    top: 50%;
+    margin-left: -35vw;
+    margin-top: -30vw;
+    background-color: #fff;
+    text-align: center;
+    border-radius: 8rpx;
+}
+.live-room-cover-alert-close {
+    position: absolute;
+    right: 0;
+    width: 10vw;
+    height: 10vw;
+    line-height: 10vw;
+    color: #ccc;
+    font-size: 6vw;
+}
+.live-room-cover-alert-pic {
+    width: 20vw;
+    height: 20vw;
+    border-radius: 50%;
+    margin-top: 8vw;
+}
+.live-room-cover-alert-name, .live-room-cover-alert-sexage {
+    height: 8vw;
+    line-height: 8vw;
+    font-size: 6vw;
+}
+.live-room-cover-alert-sexage {
+    font-size: 4vw;
+}
+.live-room-cover-alert-bottom {
+    position: absolute;
+    width: 100%;
+    bottom: 8rpx;
+    height: 10vw;
+}
+.live-room-cover-alert-bottomleft, .live-room-cover-alert-bottomright {
+    float: left;
+    width: 50%;
+    height: 100%;
+    background-color: darkorange;
+    color: #fff;
+    line-height: 10vw;
+    font-size: 4vw;
+}
+.live-room-cover-alert-bottomright {
+    background-color: orangered;
+}
+.live-room-live-player {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
