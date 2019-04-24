@@ -1,0 +1,9 @@
+.list-mode-container {
+    width:　100vw;
+    height: calc(100vh - 120rpx);
+}
+.list-mode {
+    width: 100%;
+    height: calc(100% - 140rpx);
+    background-color: aquamarine;
+}

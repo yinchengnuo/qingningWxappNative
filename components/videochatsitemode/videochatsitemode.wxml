@@ -1,5 +1,51 @@
-<view class="site-mode">
-  <view class="site-mode-header">
-    <!-- <image class="site-mode-header-pic" src="../../images/qingning.png"></image> -->
+<view class="site-mode-container">
+  <image class="site-mode-bg" src="../../images/logo.png"></image>
+  <view class="site-mode">
+    <view class="site-mode-header">
+      <image class="site-mode-header-pic" src="../../images/logo.png"></image>
+      <view class="site-mode-header-text">
+        <view class="site-mode-header-text-top">来青柠，视频聊</view>
+        <view class="site-mode-header-text-bottom">随时随地想聊就聊...</view>
+      </view>
+    </view>
+    <view class="site-mode-text">选择心仪的TA，主动聊聊吧</view>
+    <view class="site-mode-videoarea">
+      <view class="site-mode-videoarea-videowrapper" wx:for="{{activeVideochatList}}" wx:key="index">
+        <video id="{{'videochat' + index}}" binderror="ended" bindwaiting="waiting" bindended="ended" src="{{item.streamurl + '.m3u8'}}" object-fit="fill" class="site-mode-videoitem"></video>
+      </view>
+      <view class="site-mode-lablearea">
+        <text class="site-mode-lablearea-item">全部</text>
+        <text class="site-mode-lablearea-item">新人(10)</text>
+        <text class="site-mode-lablearea-item">推荐(20)</text>
+        <text class="site-mode-lablearea-item">情感陪护(30)</text>
+        <text class="site-mode-lablearea-item">唱歌(40)</text>
+        <text class="site-mode-lablearea-item">美食(50)</text>
+        <text class="site-mode-lablearea-item">舞蹈(60)</text>
+        <text class="site-mode-lablearea-item">自由职业(70)</text>
+        <text class="site-mode-lablearea-item">护士(80)</text>
+        <text class="site-mode-lablearea-item">白领(90)</text>
+        <text class="site-mode-lablearea-item">旅游(100)</text>
+        <text class="site-mode-lablearea-item">吃货(110)</text>
+        <text class="site-mode-lablearea-item">小清新(120)</text>
+        <text class="site-mode-lablearea-item">小家碧玉(130)</text>
+        <text class="site-mode-lablearea-item">主播(140)</text>
+        <text class="site-mode-lablearea-item">逛街(150)</text>
+        <text class="site-mode-lablearea-item">外向(160)</text>
+        <text class="site-mode-lablearea-item">交朋友(170)</text>
+        <text class="site-mode-lablearea-item">摄影(180)</text>
+        <text class="site-mode-lablearea-item">吉他(190)</text>
+        <text class="site-mode-lablearea-item">文艺少女(200)</text>
+        <text class="site-mode-lablearea-item">微商(210)</text>
+        <text class="site-mode-lablearea-item">美容师(220)</text>
+        <text class="site-mode-lablearea-item">健身教练(230)</text>
+        <text class="site-mode-lablearea-item">幼师(250)</text>
+        <text class="site-mode-lablearea-item">宅女(260)</text>
+        <text class="site-mode-lablearea-item">萝莉(270)</text>
+      </view>
+    </view>
+    <view class="site-mode-join">
+      <view class="site-mode-join-top">↻ 等TA来撩</view>
+      <view class="site-mode-join-bottom">来青柠开启坐等，等待TA来连线</view>
+    </view>
   </view>
 </view>

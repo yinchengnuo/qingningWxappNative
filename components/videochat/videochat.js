@@ -15,7 +15,6 @@ Component({
       if (this.data.onListMode === this.data.onSiteMode && isShow) {
         this.setData({ onSiteMode: !this.data.onSiteMode })
       }
-      console.log('视频聊', isShow)
     }
   },
   methods: {

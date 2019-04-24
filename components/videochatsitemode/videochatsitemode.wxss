@@ -1,5 +1,115 @@
+.site-mode-container {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+.site-mode-bg {
+    position: absolute;
+    z-index: -1;
+    width: 100vw;
+    height: 100vw;
+    left: 50%;
+    top: 50%;
+    margin-left: -50vw;
+    margin-top: -50vw;
+}
 .site-mode {
+    position: absolute;
+    z-index: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(rgba(176, 227, 110, 1), rgba(176, 227, 110, 0));
+    box-sizing: border-box;
+    padding: 70rpx 0 120rpx 0;
+    font-family: "微软雅黑";
+}
+.site-mode-header {
     width: 100%;
-    height: calc(100vh - 260rpx);
-    background-color: rgba(0, 0, 0, .7);
+    height: 20vw;
+    padding: 0 1vw;
+    box-sizing: border-box;
+    display: flex;
+}
+.site-mode-header-pic {
+    width: 20vw;
+    height: 20vw;
+    margin-right: 1vw;
+}
+.site-mode-header-text-top {
+    height: 10vw;
+    line-height: 10vw;
+    font-size: 6vw;
+}
+.site-mode-header-text-bottom {
+    height: 10vw;
+    line-height: 10vw;
+    font-size: 4vw;
+}
+.site-mode-text {
+    height: 40rpx;
+    text-align: center;
+    line-height: 40rpx;
+    font-size: 20rpx;
+    color: orchid;
+}
+.site-mode-videoarea {
+    width: 100%;
+    height: calc(100vh - 210rpx - 20vw - 15vw);
+    overflow: scroll;
+}
+.site-mode-videoarea-videowrapper {
+    float: left;
+    width: 32vw;
+    height: 52vw;
+    border-radius: 2vw;
+    overflow: hidden;
+    margin-left: 1vw;
+    margin-bottom: 1vw;
+    background-color: rgb(255, 127, 234);
+}
+.site-mode-videoitem {
+    width: 100%;
+    height: 100%;
+}
+.site-mode-lablearea {
+    width: 100%;
+    margin-top: 106w;
+}
+.site-mode-lablearea-item {
+    display: inline-block;
+    height: 8vw;
+    line-height: 8vw;
+    font-size: 4vw;
+    margin: 1vw;
+    padding: 0 4vw;
+    color: rgb(47, 172, 255);
+    border: 1rpx solid #ccc;
+    border-radius: 8vw;
+}
+.site-mode-lablearea-item:first-child {
+    background-color: orangered;
+    color: #fff;
+}
+.site-mode-join {
+    width: 100%;
+    height: 15vw;
+    box-sizing: border-box;
+    padding: 2.5vw 0;
+    text-align: center;
+}
+.site-mode-join-top {
+    height: 6vw;
+    line-height: 6vw;
+    font-size: 4vw;
+    color: #fff;
+    padding: 0 2vw;
+    background-color: #aaa;
+    display: inline-block;
+    border-radius: 5vw;
+}
+.site-mode-join-bottom {
+    height: 4vw;
+    line-height: 4vw;
+    font-size: 3vw;
+    color: rgb(255, 125, 235);
 }

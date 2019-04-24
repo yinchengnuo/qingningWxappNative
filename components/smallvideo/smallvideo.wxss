@@ -35,8 +35,6 @@
     top: 50%;
     margin-left: -10vw;
     margin-top: -10vw;
-    border-radius: 50%;
-    overflow: hidden;
     z-index: 2;
     animation: translation 2s ease-in-out infinite;
 }
@@ -44,15 +42,14 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    overflow: hidden;
     animation: rolation 1s linear infinite;
 }
 .small-video-loading-image {
     position: absolute;
-    width: 30vw;
-    height: 30vw;
-    left: -5vw;
-    top: -3.6vw;
+    width: 20vw;
+    height: 20vw;
+    border-radius: 50%;
+    opacity: .8;
 }
 .small-video-cover-videoinfo {
     position: absolute;
@@ -145,7 +142,7 @@
     height: 10vw;
     overflow: hidden;
     border-radius: 10vw;
-    background: linear-gradient(rgb(177, 221, 85) , rgb(124, 184, 44));
+    background-color: #fff;
 }
 .small-video-cover-download-icon {
     width: 10vw;

@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "navigationbar": "../navigationbar/navigationbar"
+  },
   "component": true
 }

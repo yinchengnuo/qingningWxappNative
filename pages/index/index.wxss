@@ -23,5 +23,5 @@
   height: 48rpx;
 }
 .tab-selected {
-  color: orange;
+  color: rgb(176, 227, 110);
 }

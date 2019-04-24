@@ -1,3 +1,6 @@
-<view class="video-chat">
-  视频聊列表模式
+<view class="list-mode-container">
+  <navigationbar title="视频聊"></navigationbar>
+  <view class="list-mode">
+    视频聊列表模式
+  </view>
 </view>

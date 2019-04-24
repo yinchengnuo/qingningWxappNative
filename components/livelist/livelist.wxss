@@ -1,6 +1,10 @@
 .live-list-container {
     width: 100%;
-    height: calc(100vh - 260rpx);
+    height: calc(100vh - 120rpx);
+}
+.live-list {
+    width: 100%;
+    height: calc(100% - 140rpx);
     position: relative;
 }
 .live-list-nav-bar {
