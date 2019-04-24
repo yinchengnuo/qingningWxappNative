@@ -1,0 +1,5 @@
+<view class="site-mode">
+  <view class="site-mode-header">
+    <!-- <image class="site-mode-header-pic" src="../../images/qingning.png"></image> -->
+  </view>
+</view>

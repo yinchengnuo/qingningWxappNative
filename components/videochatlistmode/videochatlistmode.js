@@ -7,21 +7,14 @@ Component({
     }
   },
   data: {
-    onSiteMode: false,
-    onListMode: false
   },
   observers: {
     isShow(isShow) {
-      if (this.data.onListMode === this.data.onSiteMode && isShow) {
-        this.setData({ onSiteMode: !this.data.onSiteMode })
-      }
-      console.log('视频聊', isShow)
+      console.log('视频聊列表模式', isShow)
     }
   },
   methods: {
-    switchMode () {
-      this.setData({ onSiteMode: !this.data.onSiteMode, onListMode: !this.data.onListMode })
-    }
+    customMethod() {}
   },
   created () {
     console.log('video-chat-created')

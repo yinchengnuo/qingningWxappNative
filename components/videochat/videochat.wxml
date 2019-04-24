@@ -1,3 +1,14 @@
 <view class="video-chat">
-  视频聊
+  <video-chat-site-mode style="display:{{onSiteMode ? 'flex' : 'none'}}" isShow="{{onSiteMode}}"></video-chat-site-mode>
+  <video-chat-list-mode style="display:{{onListMode ? 'flex' : 'none'}}" isShow="{{onListMode}}"></video-chat-list-mode>
+  <view class="video-chat-mode-switch" bind:tap="switchMode">
+    <view class="video-chat-switchto-list" style="display:{{onSiteMode ? 'flex' : 'none'}}">
+      <view class="video-chat-switch-logo">🔆</view>
+      <view class="video-chat-switch-text">列表模式</view>
+    </view>
+    <view class="video-chat-switchto-site" style="display:{{onListMode ? 'flex' : 'none'}}">
+      <view class="video-chat-switch-logo">🔱</view>
+      <view class="video-chat-switch-text">坐等模式</view>
+    </view>
+  </view>
 </view>

@@ -1,10 +1,10 @@
 <view class="index">
-  <navigationbar style="display:{{onSmallVideo ? 'none' : 'flex'}}" title="{{navigationBarTitle}}"></navigationbar>
+  <navigationbar style="display:{{onSmallVideo ? 'none' : 'flex'}}; background-color: {{onVidedoChat ? 'rgba(0, 0, 0, .7)' : '#fff'}}; color: {{onVidedoChat ? '#fff' : '#000'}}" title="{{navigationBarTitle}}"></navigationbar>
   <live-list style="display:{{onLiveList ? 'flex' : 'none'}}" isShow="{{onLiveList}}"></live-list>
   <small-video style="display:{{onSmallVideo ? 'flex' : 'none'}}" isShow="{{onSmallVideo}}"></small-video>
   <video-chat style="display:{{onVidedoChat ? 'flex' : 'none'}}" isShow="{{onVidedoChat}}"></video-chat>
   <about style="display:{{onAbout ? 'flex' : 'none'}}" isShow="{{onAbout}}"></about>
-  <view class="tab-bar" style="bottom: {{tabBarTranslate}}px; rotate(7deg);; background: {{onSmallVideo ? 'transparent' : '#fff'}}">
+  <view class="tab-bar" style="background-color: {{onSmallVideo ? 'transparent' : onVidedoChat ? 'rgba(0, 0, 0, .7)' : '#fff'}}">
     <view class="tab-list" bind:tap="tap" data-state="live-list">
       <image wx:if="{{onLiveList}}" class="tab-image" src="../../images/tabBar/onlive.png"></image>
       <image wx:else class="tab-image" src="../../images/tabBar/live.png"></image>  
@@ -23,7 +23,7 @@
     <view class="tab-list" bind:tap="tap" data-state="about">
       <image wx:if="{{onAbout}}" class="tab-image" src="../../images/tabBar/onabout.png"></image>
       <image wx:else class="tab-image" src="../../images/tabBar/about.png"></image>  
-      <text class="{{onAbout ? 'tab-selected' : ''}}" selectable="false" space="false" decode="false">关于富聊</text>
+      <text class="{{onAbout ? 'tab-selected' : ''}}" selectable="false" space="false" decode="false">关于青柠</text>
     </view>
   </view>
 </view>

@@ -1,4 +1,7 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "video-chat-site-mode": "../videochatsitemode/videochatsitemode",
+    "video-chat-list-mode": "../videochatlistmode/videochatlistmode"
+  },
   "component": true
 }

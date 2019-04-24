@@ -1,4 +1,36 @@
-.container {
+.video-chat {
     width: 100%;
     height: calc(100vh - 260rpx);
+}
+.video-chat-mode-switch {
+    position: fixed;
+    width: 30vw;
+    height: 10vw;
+    right: 0;
+    bottom: 300rpx;
+    border-radius: 10vw;
+    background: linear-gradient(to right, rgba(255, 12, 182, 0.6) , rgba(255, 0, 106, 0.6));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.video-chat-switchto-list, .video-chat-switchto-site {
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.video-chat-switch-logo {
+    width: 8vw;
+    height: 8vw;
+    background-color: #fff;
+    border-radius: 50%;
+    font-size: 4vw;
+    text-align: center;
+    line-height: 8vw;
+    margin-right: 1vw;
+}
+.video-chat-switch-text {
+    font-size: 4vw;
+    color: #fff;
 }

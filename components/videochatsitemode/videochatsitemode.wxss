@@ -1,0 +1,5 @@
+.site-mode {
+    width: 100%;
+    height: calc(100vh - 260rpx);
+    background-color: rgba(0, 0, 0, .7);
+}
