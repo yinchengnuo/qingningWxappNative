@@ -12,7 +12,22 @@
     <view class="site-mode-active-area">
       <view class="site-mode-video-area">
         <view class="site-mode-videoarea-videowrapper" wx:for="{{activeVideochatList}}" wx:key="index">
-          <video id="{{'videochat' + index}}" bindplay="play" binderror="error" bindwaiting="waiting" bindended="ended" controls="{{false}}" muted="{{true}}" src="{{item.streamurl}}" object-fit="fill" class="site-mode-videoitem"></video>
+          <view class="site-mode-loading" style="z-index: {{playing[index] ? '-1' : '3'}}">
+            <image class="site-mode-loading-image" src="../../images/logo.png" lazy-load="{{false}}"></image>  
+          </view>
+          <view class="site-mode-video-cover">
+            <view class="site-mode-cover-close" data-index="{{index}}" bindtap="ended">×</view>
+            <view class="site-mode-cover-bottom">
+              <view class="site-mode-cover-namelevel">
+                <view class="site-mode-cover-name">{{item.name}}</view>
+                <view class="site-mode-cover-level">M{{item.charmlevel}}</view>
+              </view>
+              <view class="site-mode-cover-price">{{item.videoenergy}}能量/分钟</view>
+              <view class="site-mode-cover-city">{{item.city}}</view>
+            </view>
+          </view>
+          <image class="site-mode-video-bg" src="{{item.userpic}}" style="z-index: {{playing[index] ? '-1' : '1'}}"></image>
+          <video id="{{'videochat' + index}}" bindplay="play" binderror="error" bindwaiting="waiting" bindended="ended" controls="{{false}}" muted="{{true}}" src="{{item.hqStreamUrl}}" show-center-play-btn="{{false}}" object-fit="fill" class="site-mode-videoitem"></video>
         </view>
       </view>
       <view class="site-mode-lable-area">

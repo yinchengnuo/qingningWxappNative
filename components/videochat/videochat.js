@@ -7,14 +7,13 @@ Component({
     }
   },
   data: {
-    onSiteMode: false,
-    onListMode: false
+    onSiteMode: true,
+    onListMode: false,
+    onVideochat: false
   },
   observers: {
     isShow(isShow) {
-      if (this.data.onListMode === this.data.onSiteMode && isShow) {
-        this.setData({ onSiteMode: !this.data.onSiteMode })
-      }
+      this.setData({ onVideochat: isShow })
     }
   },
   methods: {

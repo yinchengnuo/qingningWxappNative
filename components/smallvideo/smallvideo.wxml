@@ -2,10 +2,8 @@
   <swiper class="small-video-swiper" vertical="{{true}}" circular="{{true}}" duration="{{234}}" bindanimationfinish="swiperMoveFinish">
     <block wx:for="{{smallvideoList}}" wx:key="index">
       <swiper-item item-id="{{index}}">
-        <view class="small-video-loading-wrapper" wx:if="{{index === nowIndex && !playing}}">
-          <view class="small-video-loading">
-            <image class="small-video-loading-image" src="../../images/logo.png" lazy-load="{{false}}"></image>  
-          </view>
+        <view class="small-video-loading" style="z-index: {{playing ? '-1' : '3'}}">
+          <image class="small-video-loading-image" src="../../images/logo.png" lazy-load="{{false}}"></image>  
         </view>
         <view class="small-video-cover-videoinfo">
           <view class="small-video-cover-userinfo">
@@ -30,8 +28,8 @@
             </view>
           </view>
         </view>
-        <video id="{{'smallvideo' + index}}" wx-if="{{Android}}" hidden="{{index !== nowIndex}}" custom-cache="{{false}}" style="opacity: {{playing ? '1' : '0'}}" class="live-room-live-player" src="{{item.smallvideopath}}" object-fit="fill" loop="{{true}}" controls="{{false}}" bindplay="play" show-center-play-btn="{{false}}"></video>
-        <image class="small-video-cover-image" src="{{item.bgpath}}"></image>
+        <image class="small-video-cover-image" src="{{item.bgpath}}" style="z-index: {{playing ? '-1' : '1'}}"></image>
+        <video id="{{'smallvideo' + index}}" wx-if="{{Android && index === nowIndex}}" custom-cache="{{false}}" class="small-video-player" src="{{item.smallvideopath}}" object-fit="fill" loop="{{true}}" controls="{{false}}" bindplay="play" show-center-play-btn="{{false}}"></video>
       </swiper-item>
     </block>
   </swiper>
