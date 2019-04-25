@@ -2,7 +2,7 @@ const app = getApp()
 const windowWidth = app.globalData.systemInfo.windowWidth
 const pullDownRefreshConst = windowWidth * 0.31 - 1.25
 const api = app.globalData.api
-const { liveliveRequest } = require('../../utils/request')
+const { livelistRequest } = require('../../utils/request')
 
 Component({
   properties: {
@@ -82,13 +82,13 @@ Component({
     reachBottom () {
       if (!this.data.requestLoading) {
         if (this.data.nowIndex === 0) {
-          liveliveRequest(this, api, 'tuijian')
+          livelistRequest(this, api, 'tuijian')
         } else if (this.data.nowIndex === 1) {
-          liveliveRequest(this, api, 'caiyi')
+          livelistRequest(this, api, 'caiyi')
         } else if (this.data.nowIndex === 2) {
-          liveliveRequest(this, api, 'meili')
+          livelistRequest(this, api, 'meili')
         } else if (this.data.nowIndex === 3) {
-          liveliveRequest(this, api, 'hangzhou')
+          livelistRequest(this, api, 'hangzhou')
         }
       }
     },
@@ -116,10 +116,10 @@ Component({
         this.data.caiyiPage = 1
         this.data.meiliPage = 1
         this.data.hangzhouPage = 1
-        liveliveRequest(this, api, 'tuijian', 'init')
-        liveliveRequest(this, api, 'caiyi', 'init')
-        liveliveRequest(this, api, 'meili', 'init')
-        liveliveRequest(this, api, 'hangzhou', 'init')
+        livelistRequest(this, api, 'tuijian', 'init')
+        livelistRequest(this, api, 'caiyi', 'init')
+        livelistRequest(this, api, 'meili', 'init')
+        livelistRequest(this, api, 'hangzhou', 'init')
       }
     },
     tapChangeIndex(e) {

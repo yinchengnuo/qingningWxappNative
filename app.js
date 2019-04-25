@@ -20,6 +20,7 @@ App({
       caiyiUrl: 'videoLiveChannel!getChannelVideoLiveList.htm',
       meiliUrl: 'videoLive!getCharmList.htm',
       hangzhouUrl: 'videoLive!getLiveSameCityList.htm',
+      videochatUrl: 'videoPair!getSingleVideoPairListV2Soft.htm',
       urlQuerys: {
         apptype: 6,
         _timestamp: null,

@@ -9,11 +9,13 @@
       </view>
     </view>
     <view class="site-mode-text">选择心仪的TA，主动聊聊吧</view>
-    <view class="site-mode-videoarea">
-      <view class="site-mode-videoarea-videowrapper" wx:for="{{activeVideochatList}}" wx:key="index">
-        <video id="{{'videochat' + index}}" binderror="ended" bindwaiting="waiting" bindended="ended" src="{{item.streamurl + '.m3u8'}}" object-fit="fill" class="site-mode-videoitem"></video>
+    <view class="site-mode-active-area">
+      <view class="site-mode-video-area">
+        <view class="site-mode-videoarea-videowrapper" wx:for="{{activeVideochatList}}" wx:key="index">
+          <video id="{{'videochat' + index}}" bindplay="play" binderror="error" bindwaiting="waiting" bindended="ended" controls="{{false}}" muted="{{true}}" src="{{item.streamurl}}" object-fit="fill" class="site-mode-videoitem"></video>
+        </view>
       </view>
-      <view class="site-mode-lablearea">
+      <view class="site-mode-lable-area">
         <text class="site-mode-lablearea-item">全部</text>
         <text class="site-mode-lablearea-item">新人(10)</text>
         <text class="site-mode-lablearea-item">推荐(20)</text>

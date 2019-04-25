@@ -1,4 +1,4 @@
-function liveliveRequest(that, api, channel, init) {
+function livelistRequest(that, api, channel, init) {
     if (that.data[`${channel}Page`] || init === 'init') {
         api.urlQuerys.pageno = that.data[`${channel}Page`]
         api.urlQuerys._timestamp = Math.floor(+new Date() / 1000)
@@ -130,6 +130,66 @@ function liveliveRequest(that, api, channel, init) {
     }
 }
 
+function videochatSiteModeRequest (that, api, query) {
+    const urlQuerys = api.urlQuerys
+    let url = `${api.api}/${api.videochatUrl}?apptype=6&userid=100001&pageno=1&pagesize=`
+    if (typeof query === 'string') {
+        url += 6
+        wx.request({
+          url,
+          methods: 'GET',
+          success: (result) => {
+            let activeVideochatList = result.data.info
+            activeVideochatList.forEach((e) => {
+              let url = e.streamurl
+              e.streamurl = url.replace('rtmp://', 'http://')
+              e.streamurl += '.m3u8'
+            })
+            that.setData({
+              activeVideochatList
+            })
+            that.data.activeVideochatList.forEach((e, i) => {
+              wx.createVideoContext(`videochat${i}`, that).play()
+            })
+          }
+        })
+    } else if (typeof query === 'number') {
+        url += 666
+        wx.request({
+            url,
+            methods: 'GET',
+            success: (result) => {
+              const activeVideochatList = that.data.activeVideochatList
+              const idList = []
+              activeVideochatList.forEach((e) => {
+                idList.push(e.videoRoomId)
+              })
+              let instead = null
+              for (let i =0; i < result.data.info.length; i ++) {
+                  if (idList.indexOf(result.data.info[i].videoRoomId) === -1) {
+                    instead = result.data.info[i]
+                    break
+                  }
+              }
+              let url = instead.streamurl
+              instead.streamurl = url.replace('rtmp://', 'http://')
+              instead.streamurl += '.m3u8'
+              activeVideochatList[query] = instead
+              that.setData({
+                activeVideochatList
+              })
+              wx.createVideoContext(`videochat${query}`, that).play()
+            }
+          })
+    }
+}
+
+function videochatListModeRequest (that, api) {
+
+}
+
 module.exports = {
-    liveliveRequest
+    livelistRequest,
+    videochatSiteModeRequest,
+    videochatListModeRequest,
 }

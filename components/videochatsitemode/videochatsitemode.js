@@ -1,4 +1,6 @@
 const app = getApp()
+const api = app.globalData.api
+const { videochatSiteModeRequest } = require('../../utils/request')
 Component({
   properties: {
     isShow: {
@@ -7,42 +9,37 @@ Component({
     }
   },
   data: {
-    videochatList: [],
-    activeVideochatList: []
+    activeVideochatList: [],
+    videochat0: null,
+    videochat1: null,
+    videochat2: null,
+    videochat3: null,
+    videochat4: null,
+    videochat5: null,
   },
   observers: {
     isShow(isShow) {
-      if (isShow && !this.data.videochatList.length) {
-        wx.request({
-          url: 'https://api.96friend.cn/videoPair!getSingleVideoPairListV2Soft.htm?apptype=6&userid=26307780&pagesize=14&pageno=1',
-          methods: 'GET',
-          success: (result) => {
-            let activeVideochatList = result.data.info.slice(0, 6)
-            activeVideochatList.forEach((e) => {
-              let url = e.streamurl
-              e.streamurl = url.replace('rtmp://', 'http://')
-            })
-            this.setData({
-              activeVideochatList
-            })
-            setTimeout(() => {
-              this.data.activeVideochatList.forEach((e, i) => {
-                console.log(`videochat${i}`)
-                wx.createVideoContext(`videochat${i}`, this).play()
-              })
-            }, 0)
-          }
-        })
-      } 
+      if (isShow) {
+        videochatSiteModeRequest(this, api, 'init')
+      }
     }
   },
   methods: {
-    ended(e) {
+    play (e) {
+      clearTimeout(this.data[e.target.id])
+    },
+    error (e) {
       console.log(e)
     },
     waiting (e) {
+      this.data[e.target.id] = setTimeout(() => {
+        videochatSiteModeRequest(this, api, +e.target.id.match(/\d$/)[0])
+      }, 3333)
+    },
+    ended(e) {
       console.log(e)
     }
+
   },
   created () {
     console.log('video-chat-created')

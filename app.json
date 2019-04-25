@@ -6,6 +6,5 @@
   "window": {
     "navigationStyle": "custom",
     "navigationBarTextStyle": "black"
-  },
-  "sitemapLocation": "sitemap.json"
+  }
 }
