@@ -1,11 +1,15 @@
 <view class="site-mode-container">
+  <qrcode showRcCode="{{showRcCode}}" bind:closeQrcode="closeQrcode"></qrcode>
   <image class="site-mode-bg" src="../../images/logo.png"></image>
   <view class="site-mode">
     <view class="site-mode-header">
       <image class="site-mode-header-pic" src="../../images/logo.png"></image>
       <view class="site-mode-header-text">
         <view class="site-mode-header-text-top">来青柠，视频聊</view>
-        <view class="site-mode-header-text-bottom">随时随地想聊就聊...</view>
+        <view class="site-mode-header-text-bottom">
+          <text>随时随地想聊就聊...</text>
+          <text bindtap="download">打开APP</text>
+        </view>
       </view>
     </view>
     <view class="site-mode-text">选择心仪的TA，主动聊聊吧</view>
@@ -27,10 +31,10 @@
             </view>
           </view>
           <image class="site-mode-video-bg" src="{{item.userpic}}" style="z-index: {{playing[index] ? '-1' : '1'}}"></image>
-          <video id="{{'videochat' + index}}" bindplay="play" binderror="error" bindwaiting="waiting" bindended="ended" controls="{{false}}" muted="{{true}}" src="{{item.hqStreamUrl}}" show-center-play-btn="{{false}}" object-fit="fill" class="site-mode-videoitem"></video>
+          <video id="{{'videochat' + index}}" wx:if="{{Android}}" bindplay="play" binderror="error" bindwaiting="waiting" bindended="ended" controls="{{false}}" muted="{{true}}" src="{{item.hqStreamUrl}}" show-center-play-btn="{{false}}" object-fit="fill" class="site-mode-videoitem"></video>
         </view>
       </view>
-      <view class="site-mode-lable-area">
+      <view class="site-mode-lable-area" bindtap="download">
         <text class="site-mode-lablearea-item">全部</text>
         <text class="site-mode-lablearea-item">新人(10)</text>
         <text class="site-mode-lablearea-item">推荐(20)</text>
@@ -61,7 +65,7 @@
       </view>
     </view>
     <view class="site-mode-join">
-      <view class="site-mode-join-top">↻ 等TA来撩</view>
+      <view class="site-mode-join-top" bindtap="download">↻ 等TA来撩</view>
       <view class="site-mode-join-bottom">来青柠开启坐等，等待TA来连线</view>
     </view>
   </view>

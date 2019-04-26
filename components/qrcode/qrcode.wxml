@@ -1,0 +1,4 @@
+<view class="qrcode" hidden="{{!showRcCode}}">
+  <image class="qrcode-image" src="../../images/qrcode.png"></image>
+  <view class="qrcode-close" bindtap="close">×</view>
+</view>

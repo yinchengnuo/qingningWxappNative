@@ -8,6 +8,7 @@ Component({
     }
   },
   data: {
+    showRcCode: false,
     data: [
       {
         path: '../../images/about/1@2x.png'
@@ -37,6 +38,11 @@ Component({
     }
   },
   methods: {
-    customMethod() {}
+    download() {
+      this.setData({ showRcCode: true })
+    },
+    closeQrcode () {
+      this.setData({ showRcCode: false })
+    }
   }
 })

@@ -11,7 +11,8 @@ Component({
     Android: app.globalData.Android,
     smallvideoList,
     nowIndex: 0,
-    playing: false
+    playing: false,
+    showRcCode: false
   },
   observers: {
     isShow(isShow) {
@@ -23,6 +24,12 @@ Component({
     }
   },
   methods: {
+    download () {
+      this.setData({ showRcCode: true })
+    },
+    closeQrcode () {
+      this.setData({ showRcCode: false })
+    },
     swiperMoveFinish(e) {
       if (e.detail.current !== this.data.nowIndex) {
         smallvideoList.forEach((e, i) => {

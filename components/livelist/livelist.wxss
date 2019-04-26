@@ -45,26 +45,28 @@
     width: 68rpx;
 }
 .pull-down-refresh-animation {
+    position: absolute;
+    width: 100%;
     text-align: center;
-    height: 90rpx;
-    line-height: 90rpx;
+    height: 50px;
+    line-height: 50px;
+    top: 90rpx;
 }
 .pull-down-refresh-animation-item {
     display: inline-block;
-    width: 20rpx;
-    height: 20rpx;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
-    margin: 0 20rpx;
+    margin: 0 10px;
     background-color: #ccc;
 }
 .pull-down-refresh-animation-active {
     background-color: #aaa;
 }
 .live-list-swiper-container {
-    position: absolute;
+    position: relative;
     width: 100%;
     height: calc(100% - 90rpx);
-    top: 90rpx;
 }
 .live-list-swiper-wrapper {
     background-color: #fff;

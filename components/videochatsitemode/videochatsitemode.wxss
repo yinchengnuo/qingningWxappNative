@@ -66,6 +66,15 @@
     line-height: 10vw;
     font-size: 4vw;
 }
+.site-mode-header-text-bottom text:last-child {
+    font-size: 5vw;
+    border-radius: 10vw;
+    margin-left: 4vw;
+    padding: 0 4vw;
+    background-color: orange;
+    color: #fff;
+    text-align: center;
+}
 .site-mode-text {
     height: 40rpx;
     text-align: center;

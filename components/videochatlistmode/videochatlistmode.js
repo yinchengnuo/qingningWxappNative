@@ -14,33 +14,43 @@ Component({
     videochatList: [],
     page: 1,
     requestLoading: false,
-    pullDownRefreshDistance: 0,
+    initTop: 0,  //下拉初始位置
+    pullDownRefreshDistance: 0,  //下拉刷新的距离
+    pullDownStopDistance: 0,  //手指松开时下拉刷新的距离
     pullDownRefreshing: false,
-    refreshAnimationActive: 1
+    refreshAnimationActive: 1,
+    refreshAnimationActiveTimer: null,
+    showRcCode: false
   },
   observers: {
     isShow(isShow) {
       if (isShow) {
         if (this.data.videochatList.length === 0) {
           videochatListModeRequest(this, api)
+          this.data.requestLoading = true
         }
       }
     }
   },
   methods: {
+    download () {
+      this.setData({ showRcCode: true })
+    },
+    closeQrcode () {
+      this.setData({ showRcCode: false })
+    },
     reachBottom() {
       if (!this.data.requestLoading && this.data.page) {
-        console.log('request')
         this.data.requestLoading = true
         videochatListModeRequest(this, api)
       }
     },
     touchEnd() {
-      if (this.data.pullDownRefreshDistance > 60) {
+      if (this.data.pullDownRefreshDistance > 80) {
         this.setData({
-          pullDownRefreshing: true
+          pullDownRefreshing: true,
+          pullDownStopDistance: this.data.pullDownRefreshDistance
         })
-        console.log(2333)
         let refreshAnimationActive = this.data.refreshAnimationActive
         this.data.refreshAnimationActiveTimer = setInterval(() => {
           refreshAnimationActive ++ 
@@ -51,21 +61,28 @@ Component({
             refreshAnimationActive
           })
         }, 333) 
-        // this.requestInit()
+        videochatListModeRequest(this, api, 'init')
       }
     },
     pullDownRefresh() {
-      this.data.pullDown = true
       const query = this.createSelectorQuery()
       query.select('.list-mode-wrapper').boundingClientRect()
       query.exec((res) => {
-        if (res[0].top - pullDownRefreshConst > 0) {
-          const pullDownRefreshDistance = res[0].top - pullDownRefreshConst
-          this.setData({
-            pullDownRefreshDistance
-          })
-        }
+        const pullDownRefreshDistance = res[0].top - this.data.initTop
+        this.setData({
+          pullDownRefreshDistance
+        })
+        console.log(this.data.pullDownRefreshDistance)
       })
     },
+    getTop () {
+      if (this.data.initTop === 0) {
+        const query = this.createSelectorQuery()
+        query.select('.list-mode-wrapper').boundingClientRect()
+        query.exec((res) => {
+          this.data.initTop = res[0].top
+        })
+      }
+    }
   }
 })

@@ -13,6 +13,7 @@ Component({
     }
   },
   data: {
+    Android: app.globalData.Android,
     activeVideochatList: [],
     videochat0: null,
     videochat1: null,
@@ -20,7 +21,8 @@ Component({
     waiting0: false,
     waiting1: false,
     waiting2: false,
-    playing: [false, false, false]
+    playing: [false, false, false],
+    showRcCode: false
   },
   observers: {
     onVideochat (onVideochat) {
@@ -41,6 +43,12 @@ Component({
     }
   },
   methods: {
+    download () {
+      this.setData({ showRcCode: true })
+    },
+    closeQrcode () {
+      this.setData({ showRcCode: false })
+    },
     play (e) {
       clearTimeout(this.data[e.target.id])
       const playing = this.data.playing
@@ -51,7 +59,7 @@ Component({
       this.data['waiting' + e.target.id.match(/\d$/)[0]] = false
     },
     error (e) {
-      // videochatSiteModeRequest(this, api, +e.target.id.match(/\d$/)[0])
+      videochatSiteModeRequest(this, api, +e.target.id.match(/\d$/)[0])
     },
     waiting (e) {
       if (this.data['waiting' + e.target.id.match(/\d$/)[0]] === false) {

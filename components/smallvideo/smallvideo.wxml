@@ -1,4 +1,5 @@
 <view class="small-video">
+  <qrcode showRcCode="{{showRcCode}}" bind:closeQrcode="closeQrcode"></qrcode>
   <swiper class="small-video-swiper" vertical="{{true}}" circular="{{true}}" duration="{{234}}" bindanimationfinish="swiperMoveFinish">
     <block wx:for="{{smallvideoList}}" wx:key="index">
       <swiper-item item-id="{{index}}">
@@ -11,7 +12,7 @@
               <image class="small-video-cover-userpic" src="{{item.headpic[0]}}"></image> 
               <view class="small-video-cover-name">{{item.name}}</view>
               <view class="small-video-cover-level">m{{item.Mlevel}}</view>
-              <view class="small-video-cover-add">+</view>   
+              <view class="small-video-cover-add" bind:tap="download">+</view>   
             </view>
             <view class="small-video-cover-videodes">{{item.smallvideodes}}</view>
           </view>
@@ -19,11 +20,11 @@
             <view class="small-video-cover-share">
               <image class="small-video-cover-share-icon" src="../../images/share.png"></image>
             </view>
-            <view class="small-video-cover-download">
+            <view class="small-video-cover-download" bind:tap="download">
               <image class="small-video-cover-download-icon" src="../../images/logo.png"></image>
               <text class="small-video-cover-download-text">下载青柠直播APP，看更多小视频</text>
             </view>
-            <view class="small-video-cover-music">
+            <view class="small-video-cover-music" bind:tap="download">
               <image class="small-video-cover-music-icon" src="{{item.headpic[0]}}"></image>
             </view>
           </view>

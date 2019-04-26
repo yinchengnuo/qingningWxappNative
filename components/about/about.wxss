@@ -1,9 +1,41 @@
+@keyframes arow
+{
+    0% {
+        transform: translateY(-3vw);
+    }
+    50% {
+        transform: translateY(3vw);
+    }
+    100% {
+        transform: translateY(-3vw);
+    }
+}
 .about-container {
-    width: 100%;
-    height: calc(100vh - 120rpx);
+    width: 100vw;
+    height: 100vh;
 }
 .about-swiper {
     width: 100%;
+    height: calc(100% - 140rpx);
+}
+.about-swiper-item-image {
+    width: 100%;
     height: 100%;
+}
+.about-swiper-item-download {
+    position: absolute;
+    width: 40vw;
+    height: 10vw;
+    left: 30vw;
+    bottom: 120rpx;
+}
+.about-swiper-item-arow {
+    position: absolute;
+    width: 6vw;
+    height: 6vw;
+    left: 50%;
+    margin-left: -3vw;
+    bottom: calc(60rpx - 3vw);
+    animation: arow 2s ease-in-out infinite;
 }
 

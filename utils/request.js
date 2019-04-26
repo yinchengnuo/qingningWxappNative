@@ -192,7 +192,10 @@ function videochatSiteModeRequest(that, api, query) {
     }
 }
 
-function videochatListModeRequest(that, api) {
+function videochatListModeRequest(that, api, init) {
+    if (init) {
+        that.setData({ page: 1 })
+    }
     let page = that.data.page
     const url = `${api.api}/${api.videochatUrl}?apptype=6&userid=100001&pagesize=14&pageno=${page}`
     wx.request({
@@ -200,8 +203,17 @@ function videochatListModeRequest(that, api) {
         methods: 'GET',
         success: (result) => {
             let videochatList = that.data.videochatList
+            that.setData({ requestLoading: false })
             if (result.data.info.length) {
-                videochatList = videochatList.concat(result.data.info)
+                if (init) {
+                    videochatList = result.data.info
+                    that.setData({
+                        pullDownRefreshing: false
+                      })
+                    clearInterval(that.data.refreshAnimationActiveTimer)
+                } else {
+                    videochatList = videochatList.concat(result.data.info)
+                }
                 page ++
                 that.setData({
                     videochatList,
@@ -215,7 +227,6 @@ function videochatListModeRequest(that, api) {
             console.log(result.data.info)
         }
     })
-    console.log(url)
 }
 
 module.exports = {

@@ -1,5 +1,6 @@
 <view class="live-list-container">
   <navigationbar title="直播"></navigationbar>
+  <qrcode showRcCode="{{showRcCode}}" bind:closeQrcode="closeQrcode"></qrcode>
   <view class="live-list">
     <view class="live-list-nav-bar">
       <text class="{{nowIndex === 0 ? 'live-list-nav-item live-list-nav-item-active' : 'live-list-nav-item'}}" data-index="0" bindtap="tapChangeIndex">推荐</text>
@@ -13,12 +14,12 @@
         <view class="live-list-swiper-scrollbar-drag" style="transform: translateX({{computedPosition}}rpx)"></view>
       </view>
     </view>
-    <view class="pull-down-refresh-animation" style="opacity: {{pullDownRefreshDistance / 60}}; transform: translateY({{pullDownRefreshing ? pullDownRefreshDistance * 0.2 - 20 : pullDownRefreshDistance * 0.5}}rpx);">
+    <view class="pull-down-refresh-animation" style="opacity: {{pullDownRefreshDistance / 50}}; transform: translateY({{pullDownRefreshing ? 0 : pullDownRefreshDistance * 0.25}}rpx);">
       <text class="{{pullDownRefreshing && refreshAnimationActive === 1 ? 'pull-down-refresh-animation-item pull-down-refresh-animation-active' : 'pull-down-refresh-animation-item'}}"></text>
       <text class="{{pullDownRefreshing && refreshAnimationActive === 2 ? 'pull-down-refresh-animation-item pull-down-refresh-animation-active' : 'pull-down-refresh-animation-item'}}"></text>
       <text class="{{pullDownRefreshing && refreshAnimationActive === 3 ? 'pull-down-refresh-animation-item pull-down-refresh-animation-active' : 'pull-down-refresh-animation-item'}}"></text>
     </view>
-    <swiper class="live-list-swiper-container" vertical="{{true}}" bindtransition="pullDownRefresh" bind:touchend="touchEnd" style="top: {{pullDownRefreshing ? 90 + ((pullDownRefreshDistance - stopPullDown) > 180 ? (pullDownRefreshDistance - stopPullDown) : 90) : '90'}}rpx">
+    <swiper class="live-list-swiper-container" vertical="{{true}}" bindtransition="pullDownRefresh" bind:touchend="touchEnd" style="top: {{pullDownRefreshing ? 50 * (1- (pullDownRefreshDistance - 50) / (pullDownStopDistance - 50)) : '0'}}px">
       <swiper-item class="live-list-swiper-wrapper">
         <swiper class="live-list-swiper" 
                 current="{{nowIndex}}" 
@@ -39,16 +40,16 @@
                   </view>
                 </view>
                 <view wx:if="{{nowIndex === 0}}" class="live-list-content-bottom">{{tuijianPage ? '加载中...' : '下载青柠交友APP, 看更多直播哦~'}}
-                  <text class="live-list-content-bottom-download" hidden="{{tuijianPage}}">下载</text>
+                  <text class="live-list-content-bottom-download" hidden="{{tuijianPage}}" bindtap="download">下载</text>
                 </view>
                 <view wx:if="{{nowIndex === 1}}" class="live-list-content-bottom">{{caiyiPage ? '加载中...' : '下载青柠交友APP, 看更多直播哦~'}}
-                  <text class="live-list-content-bottom-download" hidden="{{caiyiPage}}">下载</text>
+                  <text class="live-list-content-bottom-download" hidden="{{caiyiPage}}" bindtap="download">下载</text>
                 </view>
                 <view wx:if="{{nowIndex === 2}}" class="live-list-content-bottom">{{meiliPage ? '加载中...' : '下载青柠交友APP, 看更多直播哦~'}}
-                  <text class="live-list-content-bottom-download" hidden="{{meiliPage}}">下载</text>
+                  <text class="live-list-content-bottom-download" hidden="{{meiliPage}}" bindtap="download">下载</text>
                 </view>
                 <view wx:if="{{nowIndex === 3}}" class="live-list-content-bottom">{{hangzhouPage ? '加载中...' : '下载青柠交友APP, 看更多直播哦~'}}
-                  <text class="live-list-content-bottom-download" hidden="{{hangzhouPage}}">下载</text>
+                  <text class="live-list-content-bottom-download" hidden="{{hangzhouPage}}" bindtap="download">下载</text>
                 </view>
               </scroll-view>
             </swiper-item>

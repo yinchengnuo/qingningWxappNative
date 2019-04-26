@@ -3,7 +3,7 @@
   <small-video style="display:{{onSmallVideo ? 'flex' : 'none'}}" isShow="{{onSmallVideo}}"></small-video>
   <video-chat style="display:{{onVidedoChat ? 'flex' : 'none'}}" isShow="{{onVidedoChat}}"></video-chat>
   <about style="display:{{onAbout ? 'flex' : 'none'}}" isShow="{{onAbout}}"></about>
-  <view class="tab-bar" style="background-color: {{onSmallVideo || onVidedoChat ? 'transparent' : '#fff'}}">
+  <view class="tab-bar" style="background-color: {{onSmallVideo || onVidedoChat || onAbout ? 'transparent' : '#fff'}}">
     <view class="tab-list" bind:tap="tap" data-state="live-list">
       <image wx:if="{{onLiveList}}" class="tab-image" src="../../images/tabBar/onlive.png"></image>
       <image wx:else class="tab-image" src="../../images/tabBar/live.png"></image>  

@@ -1,7 +1,11 @@
 <view class="about-container">
+  <navigationbar title="关于青柠"></navigationbar>
+  <qrcode showRcCode="{{showRcCode}}" bind:closeQrcode="closeQrcode"></qrcode>
   <swiper class="about-swiper" vertical="{{true}}">
     <swiper-item class="about-swiper-item" wx:for="{{data}}" item-id="index" wx:key="index">
-      2333
+      <image class="about-swiper-item-download" bindtap="download" src="../../images/about/download@2x.png"></image>
+      <image wx:if="{{index < 5}}" class="about-swiper-item-arow" src="../../images/about/arow-4@2x.png"></image>
+      <image class="about-swiper-item-image" src="{{item.path}}"></image>
     </swiper-item>
   </swiper>
 </view>

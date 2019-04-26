@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "navigationbar": "../navigationbar/navigationbar"
+    "navigationbar": "../navigationbar/navigationbar",
+    "qrcode": "../qrcode/qrcode"
   },
   "component": true
 }

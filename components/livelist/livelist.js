@@ -1,9 +1,7 @@
 const app = getApp()
 const windowWidth = app.globalData.systemInfo.windowWidth
-const pullDownRefreshConst = windowWidth * 0.31 - 1.25
 const api = app.globalData.api
 const { livelistRequest } = require('../../utils/request')
-
 Component({
   properties: {
     isShow: {
@@ -27,12 +25,15 @@ Component({
     swiperMoving: false,  //isFirstSwipe的判断变量
     isFirstSwipe: true,  //左右切换轮播图是否是初次滑动
     swiperStartIndex: 0,  //左右切换轮播图滑动的初始位置
+    initTop: 0,  //下拉初始位置
     pullDownRefreshDistance: 0,  //下拉刷新的距离
+    pullDownStopDistance: 0,  //手指松开时下拉刷新的距离
     refreshAnimationActive: 1,  //下拉刷新时longing小圆点的动态class
     refreshAnimationActiveTimer: null,  //下拉刷新时longing小圆点的定时器引用
     requestInitSuccess: 0,  //初始请求或下来刷新状态
     requestLoading: false,  //是否正在等待一个网络请求
-    pullDownRefreshing: false  //触发下拉刷新后网络请求状态
+    pullDownRefreshing: false,  //触发下拉刷新后网络请求状态,
+    showRcCode: false
   },
   observers: {
     isShow(isShow) {
@@ -66,16 +67,20 @@ Component({
         url: `../../pages/liveroom/liveroom?channel=${this.data.nowIndex}&globalActiveIndex=${e.currentTarget.dataset.liveinfo}`
       })
     },
+    download () {
+      this.setData({ showRcCode: true })
+    },
+    closeQrcode () {
+      this.setData({ showRcCode: false })
+    },
     pullDownRefresh() {
       const query = this.createSelectorQuery()
       query.select('.live-list-swiper-wrapper').boundingClientRect()
       query.exec((res) => {
-        if (res[0].top - pullDownRefreshConst > 0) {
-          const pullDownRefreshDistance = res[0].top - pullDownRefreshConst
-          this.setData({
-            pullDownRefreshDistance
-          })
-        }
+        const pullDownRefreshDistance = res[0].top - this.data.initTop
+        this.setData({
+          pullDownRefreshDistance
+        })
       })
     },
     reachBottom () {
@@ -92,9 +97,10 @@ Component({
       }
     },
     touchEnd() {
-      if (this.data.pullDownRefreshDistance > 60) {
+      if (this.data.pullDownRefreshDistance > 80) {
         this.setData({
-          pullDownRefreshing: true
+          pullDownRefreshing: true,
+          pullDownStopDistance: this.data.pullDownRefreshDistance
         })
         let refreshAnimationActive = this.data.refreshAnimationActive
         this.data.refreshAnimationActiveTimer = setInterval(() => {
@@ -153,5 +159,12 @@ Component({
       this.data.swiperStartIndex = this.data.nowIndex
       this.data.isFirstSwipe = false
     }
+  },
+  ready () {
+    const query = this.createSelectorQuery()
+    query.select('.live-list-swiper-wrapper').boundingClientRect()
+    query.exec((res) => {
+      this.data.initTop = res[0].top
+    })
   }
 })
