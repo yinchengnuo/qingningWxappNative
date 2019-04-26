@@ -67,7 +67,6 @@ Component({
       })
     },
     pullDownRefresh() {
-      this.data.pullDown = true
       const query = this.createSelectorQuery()
       query.select('.live-list-swiper-wrapper').boundingClientRect()
       query.exec((res) => {
@@ -154,20 +153,5 @@ Component({
       this.data.swiperStartIndex = this.data.nowIndex
       this.data.isFirstSwipe = false
     }
-  },
-  created() {
-    // console.log('live-list-created')
-  },
-  attached() {
-    // console.log('live-list-attached')
-  },
-  ready() {
-    // console.log('live-list-ready')
-  },
-  show() {
-    // console.log('live-list-show')
-  },
-  hide() {
-    // console.log('live-list-hide')
   }
 })

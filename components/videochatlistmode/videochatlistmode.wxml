@@ -1,6 +1,29 @@
 <view class="list-mode-container">
   <navigationbar title="视频聊"></navigationbar>
-  <view class="list-mode">
-    视频聊列表模式
+  <view class="pull-down-refresh-animation" style="opacity: {{pullDownRefreshDistance / 60}}; transform: translateY({{pullDownRefreshing ? pullDownRefreshDistance * 0.2 - 20 : pullDownRefreshDistance * 0.5}}rpx);">
+    <text class="{{pullDownRefreshing && refreshAnimationActive === 1 ? 'pull-down-refresh-animation-item pull-down-refresh-animation-active' : 'pull-down-refresh-animation-item'}}"></text>
+    <text class="{{pullDownRefreshing && refreshAnimationActive === 2 ? 'pull-down-refresh-animation-item pull-down-refresh-animation-active' : 'pull-down-refresh-animation-item'}}"></text>
+    <text class="{{pullDownRefreshing && refreshAnimationActive === 3 ? 'pull-down-refresh-animation-item pull-down-refresh-animation-active' : 'pull-down-refresh-animation-item'}}"></text>
   </view>
+  <swiper class="list-mode" vertical="{{true}}" bindtransition="pullDownRefresh" bind:touchend="touchEnd" style="top: {{pullDownRefreshing ? 90 + ((pullDownRefreshDistance - stopPullDown) > 180 ? (pullDownRefreshDistance - stopPullDown) : 90) : '90'}}rpx">
+    <swiper-item class="list-mode-wrapper">
+      <scroll-view scroll-y class="list-mode-list" lower-threshold="{{80}}" bindscrolltolower="reachBottom">
+        <image class="list-mode-top-pic" src="../../images/videochatheader.jpg"></image>
+        <view class="list-mode-listitem" wx:for="{{videochatList}}" wx:key="index">
+          <image class="list-mode-listitem-image" src="{{item.userpic}}"></image>
+          <view class="list-mode-userinfo">
+            <view class="list-mode-userinfo-top">
+              <text class="list-mode-userinfo-name">{{item.name}}</text>
+              <text class="list-mode-userinfo-level">m{{item.faceLevel}}</text>
+              <text class="list-mode-userinfo-sexage">{{item.sex ? '♂' : '♀'}}-{{item.year}}</text>
+            </view>
+            <view class="list-mode-userinfo-bottom">
+              <text class="list-mode-userinfo-price">{{item.videoenergy}}能量/分钟</text>
+              <text class="list-mode-userinfo-city">{{item.city}}</text>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </swiper-item>
+  </swiper>
 </view>

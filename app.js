@@ -3,7 +3,6 @@ App({
   onLaunch(options) {
     try {
       this.globalData.systemInfo = wx.getSystemInfoSync()
-      console.log(this.globalData.systemInfo)
       if (this.globalData.systemInfo.system.match(/Android/)) {
         this.globalData.Android = true
       }

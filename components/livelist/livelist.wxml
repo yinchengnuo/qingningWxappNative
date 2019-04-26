@@ -38,16 +38,16 @@
                     <text wx:if="{{item.fujin === '杭州'}}" class="live-list-item-userinfo-city">{{item.city}}</text>
                   </view>
                 </view>
-                <view wx:if="{{nowIndex === 0}}" class="live-list-content-bottom">{{tuijianPage ? '加载中...' : '下载富聊APP, 看更多直播哦~'}}
+                <view wx:if="{{nowIndex === 0}}" class="live-list-content-bottom">{{tuijianPage ? '加载中...' : '下载青柠交友APP, 看更多直播哦~'}}
                   <text class="live-list-content-bottom-download" hidden="{{tuijianPage}}">下载</text>
                 </view>
-                <view wx:if="{{nowIndex === 1}}" class="live-list-content-bottom">{{caiyiPage ? '加载中...' : '下载富聊APP, 看更多直播哦~'}}
+                <view wx:if="{{nowIndex === 1}}" class="live-list-content-bottom">{{caiyiPage ? '加载中...' : '下载青柠交友APP, 看更多直播哦~'}}
                   <text class="live-list-content-bottom-download" hidden="{{caiyiPage}}">下载</text>
                 </view>
-                <view wx:if="{{nowIndex === 2}}" class="live-list-content-bottom">{{meiliPage ? '加载中...' : '下载富聊APP, 看更多直播哦~'}}
+                <view wx:if="{{nowIndex === 2}}" class="live-list-content-bottom">{{meiliPage ? '加载中...' : '下载青柠交友APP, 看更多直播哦~'}}
                   <text class="live-list-content-bottom-download" hidden="{{meiliPage}}">下载</text>
                 </view>
-                <view wx:if="{{nowIndex === 3}}" class="live-list-content-bottom">{{hangzhouPage ? '加载中...' : '下载富聊APP, 看更多直播哦~'}}
+                <view wx:if="{{nowIndex === 3}}" class="live-list-content-bottom">{{hangzhouPage ? '加载中...' : '下载青柠交友APP, 看更多直播哦~'}}
                   <text class="live-list-content-bottom-download" hidden="{{hangzhouPage}}">下载</text>
                 </view>
               </scroll-view>

@@ -1,3 +1,7 @@
-<view class="container">
-  关于富聊
+<view class="about-container">
+  <swiper class="about-swiper" vertical="{{true}}">
+    <swiper-item class="about-swiper-item" wx:for="{{data}}" item-id="index" wx:key="index">
+      2333
+    </swiper-item>
+  </swiper>
 </view>

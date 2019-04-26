@@ -23,7 +23,7 @@ function livelistRequest(that, api, channel, init) {
                     let tuijianPage = that.data.tuijianPage
                     if (init) {
                         liveList[0] = result.data.info
-                        requestInitSuccess ++ 
+                        requestInitSuccess++
                         that.setData({
                             liveList,
                             requestInitSuccess,
@@ -48,7 +48,7 @@ function livelistRequest(that, api, channel, init) {
                     let caiyiPage = that.data.caiyiPage
                     if (init) {
                         liveList[1] = result.data.info.channelList
-                        requestInitSuccess ++ 
+                        requestInitSuccess++
                         that.setData({
                             liveList,
                             requestInitSuccess,
@@ -73,7 +73,7 @@ function livelistRequest(that, api, channel, init) {
                     let meiliPage = that.data.meiliPage
                     if (init) {
                         liveList[2] = result.data.info
-                        requestInitSuccess ++ 
+                        requestInitSuccess++
                         that.setData({
                             liveList,
                             requestInitSuccess,
@@ -103,7 +103,7 @@ function livelistRequest(that, api, channel, init) {
                     }
                     if (init) {
                         liveList[3] = result.data.info
-                        requestInitSuccess ++ 
+                        requestInitSuccess++
                         that.setData({
                             liveList,
                             requestInitSuccess,
@@ -130,28 +130,28 @@ function livelistRequest(that, api, channel, init) {
     }
 }
 
-function videochatSiteModeRequest (that, api, query) {
+function videochatSiteModeRequest(that, api, query) {
     let url = `${api.api}/${api.videochatUrl}?apptype=6&userid=100001&pageno=1&pagesize=`
     if (typeof query === 'string') {
         url += 3
         wx.request({
-          url,
-          methods: 'GET',
-          success: (result) => {
-            let activeVideochatList = result.data.info
-            activeVideochatList.forEach((e) => {
-              let url = e.hqStreamUrl
-              e.hqStreamUrl = url.replace('rtmp://', 'http://')
-              e.hqStreamUrl += '.m3u8'
-            })
-            that.setData({
-              activeVideochatList
-            })
-            console.log(activeVideochatList[0])
-            that.data.activeVideochatList.forEach((e, i) => {
-              wx.createVideoContext(`videochat${i}`, that).play()
-            })
-          }
+            url,
+            methods: 'GET',
+            success: (result) => {
+                let activeVideochatList = result.data.info
+                activeVideochatList.forEach((e) => {
+                    let url = e.hqStreamUrl
+                    e.hqStreamUrl = url.replace('rtmp://', 'http://')
+                    e.hqStreamUrl += '.m3u8'
+                })
+                that.setData({
+                    activeVideochatList
+                })
+                console.log(activeVideochatList[0])
+                that.data.activeVideochatList.forEach((e, i) => {
+                    wx.createVideoContext(`videochat${i}`, that).play()
+                })
+            }
         })
     } else if (typeof query === 'number') {
         url += 666
@@ -159,39 +159,63 @@ function videochatSiteModeRequest (that, api, query) {
             url,
             methods: 'GET',
             success: (result) => {
-              const activeVideochatList = that.data.activeVideochatList
-              const idList = []
-              const sortList = result.data.info.sort(a => Math.random() - 0.5)
-              activeVideochatList.forEach((e) => {
-                idList.push(e.videoRoomId)
-              })
-              let instead = null
-              for (let i =0; i < sortList.length; i ++) {
-                  if (idList.indexOf(sortList[i].videoRoomId) === -1) {
-                    instead = sortList[i]
-                    break
-                  }
-              }
-              let url = instead.hqStreamUrl
-              instead.hqStreamUrl = url.replace('rtmp://', 'http://')
-              instead.hqStreamUrl += '.m3u8'
-              activeVideochatList[query] = instead
-              const playing = that.data.playing
-              playing[query] = false
-              that.setData({
-                activeVideochatList, 
-              })
-              setTimeout(() => {
-                that.setData({ playing })
-              }, 200);
-              wx.createVideoContext(`videochat${query}`, that).play()
+                const activeVideochatList = that.data.activeVideochatList
+                const idList = []
+                const sortList = result.data.info.sort(a => Math.random() - 0.5)
+                activeVideochatList.forEach((e) => {
+                    idList.push(e.videoRoomId)
+                })
+                let instead = null
+                for (let i = 0; i < sortList.length; i++) {
+                    if (idList.indexOf(sortList[i].videoRoomId) === -1) {
+                        instead = sortList[i]
+                        break
+                    }
+                }
+                let url = instead.hqStreamUrl
+                instead.hqStreamUrl = url.replace('rtmp://', 'http://')
+                instead.hqStreamUrl += '.m3u8'
+                activeVideochatList[query] = instead
+                const playing = that.data.playing
+                playing[query] = false
+                that.setData({
+                    activeVideochatList,
+                })
+                setTimeout(() => {
+                    that.setData({
+                        playing
+                    })
+                }, 200);
+                wx.createVideoContext(`videochat${query}`, that).play()
             }
-          })
+        })
     }
 }
 
-function videochatListModeRequest (that, api) {
-
+function videochatListModeRequest(that, api) {
+    let page = that.data.page
+    const url = `${api.api}/${api.videochatUrl}?apptype=6&userid=100001&pagesize=14&pageno=${page}`
+    wx.request({
+        url,
+        methods: 'GET',
+        success: (result) => {
+            let videochatList = that.data.videochatList
+            if (result.data.info.length) {
+                videochatList = videochatList.concat(result.data.info)
+                page ++
+                that.setData({
+                    videochatList,
+                    page
+                })
+            } else {
+                that.setData({
+                    page: 0
+                })
+            }
+            console.log(result.data.info)
+        }
+    })
+    console.log(url)
 }
 
 module.exports = {
