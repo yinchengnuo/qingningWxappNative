@@ -1,0 +1,16 @@
+.bugs {
+  width: 100%;
+  height: 100%;
+}
+.bug1 {
+  width: 100%;
+  height: 20vw;
+}
+.bug2 {
+  width: 100%;
+  height: 46vw;
+}
+.bug3 {
+  width: 100%;
+  height: 66vw;
+}

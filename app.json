@@ -1,7 +1,10 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/liveroom/liveroom"
+    "pages/bugs/bugs",
+    "pages/liveroom/liveroom",
+    "pages/userindex/userindex",
+    "pages/videochatwaitingroom/videochatwaitingroom"
   ],
   "window": {
     "navigationStyle": "custom",

@@ -1,0 +1,12 @@
+<view class="bugs">
+  <navigationbar title="bugs"></navigationbar>
+  因为
+  <image class="bug1" src="../../images/bug1.jpg" ></image>
+  并且
+  <image class="bug2" src="../../images/bug2.jpg" ></image>
+  所以
+  我只能用普通的video组件来播放直播流和小视频，勉强还能播放，就是有点慢
+  但是
+  <image class="bug3" src="../../images/bug3.jpg" ></image>
+  而且类似的问题貌似每天都有人在社区里问，ios的video无法播放视频。已知的一种解决方案（但是没有试过）就是把视频变成云点播的形式。。。。。。所以，目前ios上不能播放视频。
+</view>

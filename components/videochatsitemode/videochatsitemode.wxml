@@ -15,12 +15,12 @@
     <view class="site-mode-text">选择心仪的TA，主动聊聊吧</view>
     <view class="site-mode-active-area">
       <view class="site-mode-video-area">
-        <view class="site-mode-videoarea-videowrapper" wx:for="{{activeVideochatList}}" wx:key="index">
+        <view class="site-mode-videoarea-videowrapper" wx:for="{{activeVideochatList}}" wx:key="index" data-liveInfo="{{'sitemode-' + index}}" bind:tap="toVideochatWating">
           <view class="site-mode-loading" style="z-index: {{playing[index] ? '-1' : '3'}}">
             <image class="site-mode-loading-image" src="../../images/logo.png" lazy-load="{{false}}"></image>  
           </view>
           <view class="site-mode-video-cover">
-            <view class="site-mode-cover-close" data-index="{{index}}" bindtap="ended">×</view>
+            <view class="site-mode-cover-close" data-index="{{index}}" catchtap="ended">×</view>
             <view class="site-mode-cover-bottom">
               <view class="site-mode-cover-namelevel">
                 <view class="site-mode-cover-name">{{item.name}}</view>

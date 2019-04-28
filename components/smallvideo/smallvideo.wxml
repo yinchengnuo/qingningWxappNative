@@ -9,7 +9,7 @@
         <view class="small-video-cover-videoinfo">
           <view class="small-video-cover-userinfo">
             <view class="small-video-cover-user">
-              <image class="small-video-cover-userpic" src="{{item.headpic[0]}}"></image> 
+              <image class="small-video-cover-userpic" src="{{item.headpic[0]}}" data-userinfo="{{item.name}}" bind:tap="toUserIndex"></image> 
               <view class="small-video-cover-name">{{item.name}}</view>
               <view class="small-video-cover-level">m{{item.Mlevel}}</view>
               <view class="small-video-cover-add" bind:tap="download">+</view>   

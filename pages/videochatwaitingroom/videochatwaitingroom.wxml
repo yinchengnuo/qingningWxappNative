@@ -1,0 +1,36 @@
+<view class="videochat-watingroom">
+  <navigationbar title="{{liveroominfo.name}}"></navigationbar>
+  <qrcode showRcCode="{{showRcCode}}" bind:closeQrcode="closeQrcode"></qrcode>
+  <view class="videochat-watingroom-container">
+    <view class="videochat-watingroom-loading" style="z-index: {{playing ? '-1' : '3'}}">
+      <image class="videochat-watingroom-loading-image" src="../../images/logo.png" lazy-load="{{false}}"></image>  
+    </view>
+    <view class="videochat-watingroom-cover-roominfo">
+      <view class="videochat-watingroom-cover-userinfo">
+        <image class="videochat-watingroom-cover-userpic" src="{{liveroominfo.userpic}}" data-userinfo="{{liveroominfo.name}}" bind:tap="toUserIndex"></image> 
+        <view class="videochat-watingroom-cover-name">{{liveroominfo.name}}</view>
+        <view class="videochat-watingroom-cover-level">m{{liveroominfo.charmlevel}}</view>
+        <view class="videochat-watingroom-cover-city">{{liveroominfo.city}}</view>
+        <view class="videochat-watingroom-cover-age">{{liveroominfo.year}}岁</view>
+        <view class="videochat-watingroom-cover-add" bind:tap="download">+</view>   
+      </view>
+      <view class="videochat-watingroom-cover-bottom">
+        <view class="videochat-watingroom-cover-share">
+          <image class="videochat-watingroom-cover-share-icon" src="../../images/share.png"></image>
+        </view>
+        <view class="videochat-watingroom-cover-download" bindtap="download">
+          <image class="videochat-watingroom-cover-download-icon" src="../../images/logo.png"></image>
+          <text class="videochat-watingroom-cover-download-text">下载青柠直播APP，选TA和你视频聊</text>
+        </view>
+        <view class="videochat-watingroom-cover-close" bind:tap="back">
+          <image class="videochat-watingroom-cover-close-icon" src="../../images/close.png"></image>
+        </view>
+      </view>
+    </view>
+    <image class="videochat-watingroom-cover-image" src="{{liveroominfo.userpic}}" style="z-index: {{playing ? '-1' : '1'}}; left: {{-coverImageLeft + 'px'}}"></image>
+    <video id="videochat-watingroom-player" wx-if="{{Android && showPlayer}}" custom-cache="{{false}}" binderror="ended" bindended="ended" class="videochat-watingroom-player" src="{{liveroominfo.hqStreamUrl}}" object-fit="fill" controls="{{false}}" bindplay="play" show-center-play-btn="{{false}}"></video>
+    <view class="videochat-waitingroom-ended" wx:if="{{liveended}}">
+      当前用户已被视频聊接走，不在坐等状态了~ {{backDelay}}秒后返回坐等列表页
+    </view>
+  </view>
+</view>

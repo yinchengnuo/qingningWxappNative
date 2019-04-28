@@ -1,0 +1,170 @@
+@keyframes rolation
+{
+    from {
+        transform: rotateZ(0deg);
+    }
+    to {
+        transform: rotateZ(360deg);
+    }
+}
+@keyframes translation
+{
+    0% {
+        transform: translateY(-10vw);
+    }
+    50% {
+        transform: translateY(10vw);
+    }
+    100% {
+        transform: translateY(-10vw);
+    }
+}
+.videochat-watingroom {
+  width: 100%;
+  height: 100%;
+}
+.videochat-watingroom-container{
+  height: calc(100% - 140rpx);
+  position: relative;
+}
+.videochat-watingroom-loading {
+  position: absolute;
+  width: 20vw;
+  height: 20vw;
+  left: 50%;
+  top: 50%;
+  margin-left: -10vw;
+  margin-top: -10vw;
+  z-index: 3;
+  animation: translation 2s ease-in-out infinite;
+}
+.videochat-watingroom-loading-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  opacity: .8;
+  animation: rolation 1s linear infinite;
+}
+.videochat-watingroom-cover-roominfo {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+.videochat-watingroom-cover-userinfo {
+  position: absolute;
+  width: 100vw; 
+  height: 10vw;
+  bottom: 20vw;
+  box-sizing: border-box;
+  padding-left: 2vw;
+  display: flex;
+  align-items: center;
+}
+.videochat-watingroom-cover-userpic {
+  float: left;
+  margin-right: 2vw;
+  width: 10vw;
+  height: 10vw;
+  border-radius: 50%;
+}
+.videochat-watingroom-cover-name, .videochat-watingroom-cover-level, .videochat-watingroom-cover-city, .videochat-watingroom-cover-age, .videochat-watingroom-cover-add {
+  float: left;
+  color: #fff;
+  margin-right: 2vw;
+  font-size: 5vw;
+}
+.videochat-watingroom-cover-level {
+  background-color: orangered;
+  padding: 0 1vw;
+  border-radius: 1vw;
+  font-size: 3vw;
+}
+.videochat-watingroom-cover-city, .videochat-watingroom-cover-age, .videochat-watingroom-cover-add {
+  font-size: 3vw;
+}
+.videochat-watingroom-cover-add {
+  background-color: orangered;
+  width: 4vw;
+  line-height: 4vw;
+  text-align: center;
+  height: 4vw;
+  font-size: 3.5vw;
+  border-radius: 50%;
+  color: #fff;
+}
+.videochat-watingroom-cover-bottom {
+  position: absolute;
+  width: 100vw; 
+  height: 20vw;
+  z-index: 666;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;   
+}
+.videochat-watingroom-cover-share, .videochat-watingroom-cover-close {
+  width: 10vw;
+  height: 10vw;
+  display: flex;
+  border-radius: 50%;
+  justify-content: space-around;
+  align-items: center; 
+  background-color: rgba(0, 0, 0, .6)
+}
+.videochat-watingroom-cover-share-icon {
+  width: 5vw;
+  height: 4vw;
+}.videochat-watingroom-cover-close-icon {
+  width: 5vw;
+  height: 5vw;
+}
+.videochat-watingroom-cover-download {
+  width: 70vw;
+  height: 10vw;
+  overflow: hidden;
+  border-radius: 10vw;
+  background-color: #fff;
+}
+.videochat-watingroom-cover-download-icon {
+  width: 10vw;
+  height: 10vw;
+  float: left;
+}
+.videochat-watingroom-cover-download-text {
+  display: inline-block;
+  width: 60vw;
+  height: 10vw;
+  line-height: 10vw;
+  color: rgb(255, 0, 66);
+  font-weight: bold;
+  font-size: 28rpx;
+  opacity: .6;
+}
+.videochat-watingroom-cover-image {
+  position: absolute;
+  width: calc(100vh - 140rpx);
+  height: calc(100vh - 140rpx);
+  z-index: 1;
+}
+.videochat-watingroom-player {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+.videochat-waitingroom-ended {
+  position: absolute;
+  padding: 2vw;
+  bottom: 40vw;
+  z-index: 4;
+  width: 80%;
+  left: 10vw;
+  height: 10vw;
+  font-size: 4vw;
+  border-radius: 10vw;
+  color: #fff;
+  text-align: center;
+  background-color: rgb(255, 0, 128);
+}

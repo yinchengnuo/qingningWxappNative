@@ -1,0 +1,33 @@
+<view class="user-index">
+  <navigationbar title="个人主页" style="position: absolute; width: 100%; z-index: 1; color: #fff; background-color: transparent;"></navigationbar>
+  <qrcode showRcCode="{{showRcCode}}" bind:closeQrcode="closeQrcode"></qrcode>
+  <swiper class="user-index-picswiper" circular="true">
+    <swiper-item wx:for="{{userinfo.headpic}}" wx:key="index">
+      <image class="user-index-pic" src="{{item}}"></image>
+    </swiper-item>  
+  </swiper>
+  <view class="user-index-info">
+    <view class="uer-index-baseinfo">
+      <view class="uer-index-name">{{userinfo.name}}</view>
+      <view class="uer-index-level">m{{userinfo.Mlevel}}</view>
+      <view class="uer-index-sexage">{{userinfo.sex ? '♂' : '♀'}}-{{userinfo.age}}岁</view>
+    </view>
+    <view class="uer-index-lable">
+      <view class="user-index-info-title">{{userinfo.sex ? '他' : '她'}}的标签</view>
+      <view class="user-index-info-content">
+        <view class="user-index-info-lables">美食</view>
+        <view class="user-index-info-lables">白领</view>
+        <view class="user-index-info-lables">旅游</view>
+        <view class="user-index-info-lables">健身</view>
+      </view>
+    </view>
+    <view class="uer-index-introduction">
+      <view class="user-index-info-title">我自介绍</view>
+      <view class="user-index-info-content">{{userinfo.introduction}}的标签</view>
+    </view>
+    <view class="uer-index-bottom">
+      <view class="uer-index-bottom-msg" bindtap="download">✉私信</view>
+      <view class="uer-index-bottom-fouce" bindtap="download">+关注</view>
+    </view>
+  </view>
+</view>

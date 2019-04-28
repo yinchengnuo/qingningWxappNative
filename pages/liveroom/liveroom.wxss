@@ -49,13 +49,13 @@
     position: absolute;
     width: 100vh;
     height: 100vh;
-    z-index: 2;
+    z-index: 1;
 }
 .live-room-cover-roominfo {
     position: absolute;
     width: 96vw;
     height: 10vw;
-    z-index: 666;
+    z-index: 2;
     left: 2vw;
     top: 8vw;
 }

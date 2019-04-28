@@ -30,6 +30,11 @@ Component({
     closeQrcode () {
       this.setData({ showRcCode: false })
     },
+    toUserIndex (e) {
+      wx.navigateTo({
+        url: `../../pages/userindex/userindex?name=${e.currentTarget.dataset.userinfo}`
+      })
+    },
     swiperMoveFinish(e) {
       if (e.detail.current !== this.data.nowIndex) {
         smallvideoList.forEach((e, i) => {

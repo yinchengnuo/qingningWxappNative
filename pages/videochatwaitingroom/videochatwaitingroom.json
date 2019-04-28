@@ -1,5 +1,6 @@
 {
   "usingComponents": {
+    "navigationbar": "../../components/navigationbar/navigationbar",
     "qrcode": "../../components/qrcode/qrcode"
   },
   "backgroundColor": "#fff"

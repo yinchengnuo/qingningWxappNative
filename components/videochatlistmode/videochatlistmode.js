@@ -1,11 +1,14 @@
 const app = getApp()
 const windowWidth = app.globalData.systemInfo.windowWidth
-const pullDownRefreshConst = windowWidth * 0.31 - 1.25
 const api = app.globalData.api
 const { videochatListModeRequest } = require('../../utils/request')
 Component({
   properties: {
     isShow: {
+      type: Boolean,
+      value: 'default value',
+    },
+    onVideochat: {
       type: Boolean,
       value: 'default value',
     }
@@ -30,6 +33,9 @@ Component({
           this.data.requestLoading = true
         }
       }
+    },
+    videochatList (listmodeList) {
+      app.globalData.listmodeList = listmodeList
     }
   },
   methods: {
@@ -38,6 +44,11 @@ Component({
     },
     closeQrcode () {
       this.setData({ showRcCode: false })
+    },
+    toVideochatWating (e) {
+      wx.navigateTo({
+        url: `../../pages/videochatwaitingroom/videochatwaitingroom?liveinfo=${e.currentTarget.dataset.liveinfo}`
+      })
     },
     reachBottom() {
       if (!this.data.requestLoading && this.data.page) {
@@ -72,7 +83,6 @@ Component({
         this.setData({
           pullDownRefreshDistance
         })
-        console.log(this.data.pullDownRefreshDistance)
       })
     },
     getTop () {
@@ -82,6 +92,19 @@ Component({
         query.exec((res) => {
           this.data.initTop = res[0].top
         })
+      }
+    }
+  },
+  pageLifetimes: {
+    show() {
+      if (this.data.isShow && this.data.onVideochat) {
+        if (app.globalData.listmodeEndedIndex) {
+          let videochatList = this.data.videochatList
+          videochatList.splice(app.globalData.listmodeEndedIndex, 1)
+          clearInterval(app.globalData.listmodeEndeTimer)
+          this.setData({ videochatList })
+          app.globalData.listmodeEndedIndex = null
+        }
       }
     }
   }

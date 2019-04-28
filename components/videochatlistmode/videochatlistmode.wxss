@@ -9,6 +9,7 @@
     text-align: center;
     height: 50px;
     line-height: 50px;
+    opacity: 0;
 }
 .pull-down-refresh-animation-item {
     display: inline-block;
@@ -45,7 +46,6 @@
     position: relative;
     border-radius: 2vw;
     overflow: hidden;
-    background-color: aquamarine;
 }
 .list-mode-listitem-image {
     width: 100%;

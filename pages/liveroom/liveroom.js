@@ -12,9 +12,11 @@ Page({
     globalActiveIndex: 0,
     currentIndex: 1,
     playing: false,
-    alertHidden: true
+    alertHidden: true,
+    showRcCode: false
   },
   play () {
+    console.log(2333)
     setTimeout(() => {
       this.setData({
         playing: true
@@ -110,13 +112,18 @@ Page({
     this.setData({ alertHidden: true })
   },
   toUserIndex (e) {
-    console.log(e.currentTarget.dataset)
-  },
-  toAbout () {
-    console.log('toAbout')
+    wx.navigateTo({
+      url: `../userindex/userindex?name=${e.currentTarget.dataset.userinfo}`
+    })
   },
   back () {
     wx.navigateBack({ delta: 0 })
+  },
+  download () {
+    this.setData({ showRcCode: true })
+  },
+  closeQrcode () {
+    this.setData({ showRcCode: false })
   },
   onLoad (option) {
     liveList = app.globalData.liveList[option.channel]

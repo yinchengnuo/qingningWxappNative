@@ -147,7 +147,6 @@ function videochatSiteModeRequest(that, api, query) {
                 that.setData({
                     activeVideochatList
                 })
-                console.log(activeVideochatList[0])
                 that.data.activeVideochatList.forEach((e, i) => {
                     wx.createVideoContext(`videochat${i}`, that).play()
                 })
@@ -207,24 +206,26 @@ function videochatListModeRequest(that, api, init) {
             if (result.data.info.length) {
                 if (init) {
                     videochatList = result.data.info
-                    that.setData({
-                        pullDownRefreshing: false
-                      })
                     clearInterval(that.data.refreshAnimationActiveTimer)
                 } else {
                     videochatList = videochatList.concat(result.data.info)
                 }
                 page ++
+                videochatList.forEach((e) => {
+                    let url = e.hqStreamUrl
+                    e.hqStreamUrl = url.replace('rtmp://', 'http://')
+                    e.hqStreamUrl += '.m3u8'
+                })
                 that.setData({
                     videochatList,
-                    page
+                    page,
+                    pullDownRefreshing: false
                 })
             } else {
                 that.setData({
                     page: 0
                 })
             }
-            console.log(result.data.info)
         }
     })
 }

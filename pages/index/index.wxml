@@ -1,4 +1,8 @@
 <view class="index">
+  <view class="bugs" wx:if="{{!Android}}" bind:tap="toBUGS">BUGS</view>
+  <view class="alert" wx:if="{{!Android && !known}}">由于微信官方对个人所有类型的小程序没有开放相关类目，因此没有 live-player 组件的使用权限。所以当前小程序在IOS系统手机上无法播放视频！详细信息请点击左上角 BUGS 按钮。
+    <text class="know" bind:tap="knowBugs">我知道了</text>
+  </view>
   <live-list style="display:{{onLiveList ? 'flex' : 'none'}}" isShow="{{onLiveList}}"></live-list>
   <small-video style="display:{{onSmallVideo ? 'flex' : 'none'}}" isShow="{{onSmallVideo}}"></small-video>
   <video-chat style="display:{{onVidedoChat ? 'flex' : 'none'}}" isShow="{{onVidedoChat}}"></video-chat>

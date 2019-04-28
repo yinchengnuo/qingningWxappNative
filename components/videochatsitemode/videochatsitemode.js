@@ -40,9 +40,20 @@ Component({
       if(isShow === false) {
         this.setData({ activeVideochatList: [] })
       }
+    },
+    activeVideochatList (sitemodeList) {
+      if (sitemodeList.length) {
+        app.globalData.sitemodeList = sitemodeList
+        console.log(app.globalData.sitemodeList)
+      }
     }
   },
   methods: {
+    toVideochatWating (e) {
+      wx.navigateTo({
+        url: `../../pages/videochatwaitingroom/videochatwaitingroom?liveinfo=${e.currentTarget.dataset.liveinfo}`
+      })
+    },
     download () {
       this.setData({ showRcCode: true })
     },
@@ -77,21 +88,15 @@ Component({
         videochatSiteModeRequest(this, api, e.target.dataset.index)
       }
     }
-
   },
-  created () {
-    console.log('video-chat-created')
-  },
-  attached () {
-    console.log('video-chat-attached')
-  },
-  ready () {
-    console.log('video-chat-ready')
-  },
-  show () {
-    console.log('video-chat-show')
-  },
-  hide () {
-    console.log('video-chat-hide')
+  pageLifetimes: {
+    show() {
+      if (this.data.isShow && this.data.onVideochat) {
+        videochatSiteModeRequest(this, api, 'init')
+      }
+    },
+    hide() {
+      this.setData({ activeVideochatList: [] })
+    }
   }
 })

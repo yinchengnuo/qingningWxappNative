@@ -6,7 +6,9 @@ Page({
     onLiveList: true,
     onSmallVideo: false,
     onVidedoChat: false,
-    onAbout: false
+    onAbout: false,
+    Android: app.globalData.Android,
+    known: false
   },
   tap(e) {
     if (e.currentTarget.dataset.state === 'live-list') {
@@ -38,5 +40,13 @@ Page({
         onAbout: true
       })
     }
+  },
+  knowBugs () {
+    this.setData({ known: true })
+  },
+  toBUGS () {
+    wx.navigateTo({
+      url: `../bugs/bugs`
+    })
   }
 })

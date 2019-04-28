@@ -1,0 +1,91 @@
+.user-index {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.user-index-picswiper {
+  width: 100%;
+  height: 100vw;
+}
+.user-index-pic {
+  width: 100%;
+  height: 100%;
+}
+.user-index-info {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.uer-index-baseinfo {
+  height: 16vw;
+  display: flex;
+  box-sizing: border-box;
+  padding-left: 2vw;
+  align-items: center;
+}
+.uer-index-name, .uer-index-level, .uer-index-sexage {
+  float: left;
+  margin-right: 2vw;
+}
+.uer-index-name {
+  font-weight: bold;
+}
+.uer-index-level, .uer-index-sexage {
+  padding: 0 1vw;
+  background-color: orangered;
+  color: #fff;
+  font-size: 3vw;
+  border-radius: 1vw;
+}
+.uer-index-introduction, .uer-index-lable {
+  min-height: 15vw;
+  box-sizing: border-box;
+  padding: 0 0 3vw 2vw;
+}
+.user-index-info-title{
+  height: 6vw;
+  font-size: 4vw;
+  line-height: 6vw;
+  padding-left: 1vw;
+  border-left: 1vw solid orange;
+}
+.user-index-info-content {
+  font-size: 3vw;
+  min-height: 6vw;
+  box-sizing: border-box;
+  padding-left: 2vw;
+  display: flex;
+  align-items: center;
+}
+.user-index-info-lables {
+  float: left;
+  margin-right: 2vw;
+  padding: 0 2vw;
+  background-color: orange;
+  color: #fff;
+  border-radius: 1vw;
+}
+.uer-index-bottom {
+  position: absolute;
+  width: 100%;
+  height: 20vw;
+  bottom: 0;
+  display: flex;
+  justify-content: space-around;
+}
+.uer-index-bottom-msg, .uer-index-bottom-fouce {
+  height: 12vw;
+  width: 30vw;
+  border-radius: 12vw;
+  font-size: 5vw;
+  line-height: 12vw;
+  text-align: center;
+}
+.uer-index-bottom-msg {
+  border: 1px solid #eee;
+}
+.uer-index-bottom-fouce {
+  background-color: orange;
+  color: #fff;
+}

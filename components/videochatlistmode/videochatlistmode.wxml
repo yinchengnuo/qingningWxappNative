@@ -10,7 +10,7 @@
     <swiper-item class="list-mode-wrapper">
       <scroll-view scroll-y class="list-mode-list" lower-threshold="{{80}}" bindscrolltolower="reachBottom">
         <image class="list-mode-top-pic" src="../../images/videochatheader.jpg" bind:tap="download"></image>
-        <view class="list-mode-listitem" wx:for="{{videochatList}}" wx:key="index">
+        <view class="list-mode-listitem" wx:for="{{videochatList}}" wx:key="index" data-liveInfo="{{'listmode-' + index}}" bind:tap="toVideochatWating">
           <image class="list-mode-listitem-image" src="{{item.userpic}}"></image>
           <view class="list-mode-userinfo">
             <view class="list-mode-userinfo-top">
