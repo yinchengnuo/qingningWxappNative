@@ -1,5 +1,6 @@
 # qingning-wxapp-native
-因为是模仿开发，所以没有上线。效果图如下：（PS: 用的阿里云最低配的服务器，带宽就不说了。。。还请耐心等待几分钟。。。）
+因为是模仿开发，所以没有上线。效果图如下：  
+（PS: 用的阿里云最低配的服务器，带宽就不说了。。。还请耐心等待几分钟。。。）  
 http://yinchengnuo.com/qingning-wxapp-native/qingning-wxapp-native-1.jpg  
 http://yinchengnuo.com/qingning-wxapp-native/qingning-wxapp-native-2.jpg  
 http://yinchengnuo.com/qingning-wxapp-native/qingning-wxapp-native-3.jpg  
